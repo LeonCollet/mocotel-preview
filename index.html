@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Das zweite Gehirn für Dein KMU · mocotel</title>
+<meta name="description" content="Das gesamte Wissen Deiner Firma an einem Ort. Jeder im Team bekommt in Sekunden die richtige Antwort, mit Quelle. Jetzt 97 € statt 299 €. Kein Abo, lebenslang.">
+<meta name="theme-color" content="#0E2240">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2240;--navy-2:#0A1730;--panel:rgba(255,255,255,.045);--panel-2:rgba(9,19,37,.55);
+  --fg:#ffffff;--muted:rgba(255,255,255,.72);--gray:#515054;--gray-light:#ACADB0;
+  --blue:#3058A2;--blue-deep:#1D3766;--blue-soft:#7FB0FF;--line:rgba(255,255,255,.10);--light:#F2F4F7;
+  --btn-radius:12px;--maxw:1120px;--beam-width:1.6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"IBM Plex Sans",sans-serif;background:linear-gradient(180deg,#0E2240,#0A1730);background-attachment:fixed;color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.max-c{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.bg-radial-jc{background:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(48,88,162,.30), transparent 62%)}
+.bg-radial-soft{background:radial-gradient(ellipse 70% 60% at 50% 30%, rgba(48,88,162,.16), transparent 65%)}
+.has-fade-top{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 7%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 7%,#000 100%)}
+.has-fade-bottom{-webkit-mask-image:linear-gradient(to top,transparent 0%,#000 7%,#000 100%);mask-image:linear-gradient(to top,transparent 0%,#000 7%,#000 100%)}
+.has-fade-both{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 93%,transparent 100%)}
+section.sect{position:relative;padding:5rem 1.5rem}
+section.sect-tight{position:relative;padding:3rem 1.5rem}
+section.sect-wide{position:relative;padding:6rem 1.5rem}
+.sect-h{text-align:center;max-width:46rem;margin:0 auto 3rem}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+.sect-h h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;letter-spacing:-.025em;line-height:1.08}
+.sect-h p{color:var(--muted);margin-top:1rem;font-size:1.06rem;line-height:1.55}
+.accent{color:var(--gray-light);font-style:italic;font-weight:700}
+.has-beam{position:relative}
+.border-beam{pointer-events:none;position:absolute;inset:0;border-radius:inherit;border:var(--beam-width) solid transparent;
+  -webkit-mask:linear-gradient(transparent,transparent),linear-gradient(#000,#000);mask:linear-gradient(transparent,transparent),linear-gradient(#000,#000);
+  -webkit-mask-clip:padding-box,border-box;mask-clip:padding-box,border-box;-webkit-mask-composite:source-in,xor;mask-composite:intersect}
+.border-beam::before{content:"";position:absolute;aspect-ratio:1/1;width:240px;background:linear-gradient(to left,var(--blue-soft),var(--blue),transparent);offset-path:rect(0 auto auto 0 round 240px);offset-distance:0%;animation:border-beam 8s linear infinite}
+@keyframes border-beam{to{offset-distance:100%}}
+.btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--blue-deep),var(--blue));color:#fff;font-weight:600;font-size:.96rem;letter-spacing:.04em;text-transform:uppercase;padding:15px 30px;border-radius:var(--btn-radius);border:1px solid rgba(127,176,255,.25);cursor:pointer;transition:transform .15s,filter .15s,box-shadow .15s;box-shadow:0 10px 30px rgba(48,88,162,.4),0 0 22px rgba(48,88,162,.25)}
+.btn:hover{filter:brightness(1.13);transform:translateY(-2px);box-shadow:0 16px 42px rgba(48,88,162,.55),0 0 30px rgba(48,88,162,.35)}
+.btn.lg{font-size:1.02rem;padding:18px 40px}
+.btn.ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);box-shadow:none;backdrop-filter:blur(8px)}
+.btn.ghost:hover{background:rgba(255,255,255,.09);filter:none;box-shadow:none}
+.btn.pay{width:100%;justify-content:center;font-size:1.02rem;padding:18px}
+.btn-arrow{font-size:1.1em;line-height:1}
+header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.site-nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.logo-img{height:32px;width:auto;display:block}
+.foot-logo{height:30px;width:auto}
+.nav-right{display:flex;align-items:center;gap:26px}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--muted);font-size:.95rem;font-weight:500}
+.nav-links a:hover{color:#fff}
+.site-nav .btn{padding:10px 20px;font-size:.8rem;box-shadow:none}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px 72px;
+  background:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(48,88,162,.30), transparent 62%),linear-gradient(180deg, rgba(10,23,48,.86), rgba(10,23,48,.95)),#0A1730 url('assets/img/arbeit-pc.jpg') center/cover no-repeat;}
+.hero .inner{max-width:760px;width:100%}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(48,88,162,.18);border:1px solid rgba(48,88,162,.5);color:#cfe0fb;font-weight:600;font-size:.85rem;padding:8px 18px;border-radius:555px;margin-bottom:24px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04}
+.hero p.sub{color:var(--muted);font-size:1.24rem;max-width:620px;margin:24px auto 32px}
+.hero p.sub b{color:#fff;font-weight:600}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-meta{margin-top:30px;display:flex;gap:12px 28px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:.93rem}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.ck{color:var(--blue-soft);font-weight:700}
+.console-wrap{max-width:720px;margin:46px auto 0;position:relative;isolation:isolate}
+.console{position:relative;border-radius:14px;overflow:hidden;text-align:left;font-family:"IBM Plex Mono",ui-monospace,monospace;background:linear-gradient(180deg,rgba(29,55,102,.5),rgba(9,19,37,.92));border:1px solid rgba(127,176,255,.18);box-shadow:0 30px 80px -25px rgba(48,88,162,.5),inset 0 0 0 1px rgba(255,255,255,.04)}
+.console__bar{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.3)}
+.console__dots{display:inline-flex;gap:6px}
+.console__dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.console__title{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;margin-left:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:.72rem;color:rgba(255,255,255,.78)}
+.console__title-dot{width:8px;height:8px;border-radius:2px;background:linear-gradient(135deg,var(--blue-soft),var(--blue));box-shadow:0 0 6px var(--blue)}
+.console__live{margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--blue-soft);box-shadow:0 0 8px rgba(127,176,255,.85);animation:liveDot 2s ease-in-out infinite}
+@keyframes liveDot{0%,100%{opacity:1}50%{opacity:.45}}
+.console__body{padding:1.25rem 1.4rem 1.6rem;font-size:.82rem;line-height:1.75;color:rgba(255,255,255,.78);min-height:120px}
+.console__line{display:flex;gap:1ch;min-height:1.45em}
+.console__lbl{color:rgba(255,255,255,.55);width:15ch;flex-shrink:0}
+.console__check{color:var(--blue-soft)}
+.console__group-h{color:var(--blue-soft);margin:1rem 0 .4rem;display:flex;gap:.5rem;align-items:center}
+.console__group-h::before{content:"◆";color:var(--blue);font-size:.7rem}
+.console__items{color:rgba(255,255,255,.65);padding-left:.5rem;word-break:break-word}
+.console__prompt{color:rgba(255,255,255,.85);margin-top:1.1rem}
+.console__cursor{display:inline-block;width:.6ch;height:1em;vertical-align:-2px;background:var(--blue-soft);margin-left:1px;box-shadow:0 0 6px rgba(127,176,255,.7);animation:blink 1s steps(2,end) infinite}
+@keyframes blink{50%{opacity:0}}
+.getstrip{background:var(--panel-2);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 24px;text-align:center}
+.getstrip h3{font-size:1.06rem;font-weight:600;margin-bottom:20px;color:#fff}
+.getstrip h3 b{color:var(--blue-soft)}
+.get-chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:940px;margin:0 auto}
+.get-chip{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px;font-size:.95rem;font-weight:500}
+.get-chip svg{color:var(--blue-soft);flex-shrink:0}
+.getstrip .gsub{margin-top:18px;color:var(--muted);font-size:.92rem}
+.marquee-wrap{padding:30px 0 56px;border-bottom:1px solid var(--line);overflow:hidden}
+.marquee-lbl{text-align:center;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee-row{display:flex;gap:56px;padding-right:56px;align-items:center}
+.marquee-row span{font-weight:600;font-size:1.15rem;color:rgba(255,255,255,.55);white-space:nowrap}
+.marquee-row img{height:56px;width:auto;object-fit:contain;opacity:.9;transition:opacity .2s;border-radius:8px}
+.marquee-row img:hover{opacity:1}
+.reviews{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+.reviews img{height:100px;width:auto;border-radius:10px}
+.logo-marquee{overflow:hidden;width:100%;padding:6px 0}
+.logo-marquee__track{display:flex;width:max-content;animation:scroll-x 48s linear infinite}
+.logo-marquee:hover .logo-marquee__track{animation-play-state:paused}
+.logo-marquee__group{display:flex;gap:54px;padding-right:54px;align-items:center;flex-shrink:0}
+.logo-marquee__group img{height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.6;transition:opacity .2s}
+.logo-marquee__group img:hover{opacity:1}
+@keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pain{position:relative;background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:18px;padding:34px 30px;overflow:hidden;transition:transform .18s,border-color .18s}
+.pain:hover{transform:translateY(-4px);border-color:rgba(127,176,255,.3)}
+.pain::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.pain:nth-child(1)::before{background:linear-gradient(90deg,var(--blue),transparent)}
+.pain:nth-child(2)::before{background:linear-gradient(90deg,var(--blue-soft),transparent)}
+.pain:nth-child(3)::before{background:linear-gradient(90deg,var(--blue-deep),transparent)}
+.pain h3{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.pain .punch{font-size:1rem;font-style:italic;font-weight:600;color:var(--gray-light);margin-bottom:12px}
+.pain p{color:var(--muted);font-size:.96rem}
+.pain .fix{margin-top:14px;font-size:.93rem;color:#fff;font-weight:500}
+.pain .fix b{color:var(--blue-soft)}
+.closer{text-align:center;margin-top:48px}
+.closer strong{display:block;font-size:1.4rem;margin-bottom:22px}
+.quote-wrap{display:flex;gap:32px;align-items:center;max-width:880px;margin:0 auto;background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:20px;padding:36px}
+.quote-portrait{width:128px;height:128px;border-radius:16px;object-fit:cover;flex-shrink:0;border:1px solid var(--line)}
+.quote-body blockquote{font-size:1.3rem;font-weight:600;line-height:1.42;font-style:italic;color:#fff}
+.quote-body .who{margin-top:14px;color:var(--muted);font-size:.95rem}
+.quote-body .who b{color:#fff}
+.statbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;max-width:var(--maxw);margin:0 auto}
+.stat .num{font-size:2.4rem;font-weight:700;letter-spacing:-.02em}
+.stat .lab{color:var(--muted);font-size:.92rem;margin-top:6px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat{background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .15s,border-color .15s}
+.feat:hover{transform:translateY(-4px);border-color:rgba(127,176,255,.4)}
+.feat .ico{width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:#CA2120}
+.feat .ico svg{width:36px;height:36px}
+.feat h3{font-size:1.1rem;font-weight:600;margin-bottom:9px}
+.feat p{color:var(--muted);font-size:.95rem}
+.center-cta{text-align:center;margin-top:46px}
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.uc{background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .15s,border-color .15s}
+.uc:hover{transform:translateY(-3px);border-color:rgba(127,176,255,.3)}
+.uc .dept{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.uc ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.uc li{font-size:.94rem;color:var(--muted);padding-left:18px;position:relative}
+.uc li::before{content:"„";position:absolute;left:0;top:-1px;color:var(--blue-soft);font-weight:700}
+.uc li::after{content:"\201C"}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:920px;margin:0 auto}
+.cmp{border-radius:20px;padding:34px;border:1px solid var(--line)}
+.cmp.bad{background:var(--panel)}
+.cmp.good{background:linear-gradient(160deg,rgba(48,88,162,.3),rgba(9,19,37,.5));border-color:rgba(127,176,255,.35);backdrop-filter:blur(13px)}
+.cmp .tag{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.cmp.good .tag{color:var(--blue)}
+.cmp .amount{font-size:1.6rem;font-weight:700;margin-bottom:18px}
+.cmp ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.cmp li{display:flex;gap:10px;align-items:flex-start;font-size:.96rem;color:var(--muted)}
+.cmp .m{font-weight:700;flex-shrink:0}
+.cmp.bad .m{color:var(--gray-light)}
+.cmp.good .m{color:var(--blue-soft)}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ben{position:relative;background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:18px;padding:30px;overflow:hidden;transition:transform .15s,border-color .15s}
+.ben:hover{transform:translateY(-4px);border-color:rgba(127,176,255,.3)}
+.ben::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),transparent)}
+.ben h3{font-size:1.18rem;font-weight:700;margin-bottom:10px}
+.ben p{color:var(--muted);font-size:.95rem}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:18px;padding:30px}
+.step-n{font-family:"IBM Plex Mono",monospace;font-size:1.6rem;font-weight:700;color:var(--blue-soft);margin-bottom:12px}
+.step h3{font-size:1.18rem;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.95rem}
+@media(max-width:880px){.steps-grid{grid-template-columns:1fr}}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:var(--maxw);margin:0 auto}
+.team-photo{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:var(--panel)}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.team-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(48,88,162,.12),rgba(9,19,37,.35));pointer-events:none}
+.team-cred{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.team-cred span{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:.86rem;font-weight:500}
+.inside-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;max-width:var(--maxw);margin:0 auto}
+.inside-grid ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+.inside-grid li{display:flex;gap:14px;align-items:flex-start}
+.inside-grid li .b{width:34px;height:34px;border-radius:9px;background:rgba(48,88,162,.2);border:1px solid rgba(127,176,255,.25);color:var(--blue-soft);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:1rem}
+.inside-grid li strong{display:block;margin-bottom:2px}
+.inside-grid li span{color:var(--muted);font-size:.94rem}
+.inside-card{background:var(--panel-2);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:22px;padding:38px}
+.inside-card .k{color:var(--blue);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.inside-card h3{font-size:1.55rem;margin:10px 0 14px;line-height:1.2}
+.inside-card p{color:var(--muted);font-size:.97rem}
+.countdown-banner{text-align:center;margin:0 auto 30px;max-width:520px}
+.countdown-banner__title{color:var(--blue-soft);font-weight:600;font-size:.95rem;margin-bottom:16px}
+.countdown{display:flex;gap:10px;justify-content:center;align-items:center}
+.countdown__cell{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(48,88,162,.32),rgba(9,19,37,.7));border:1px solid rgba(127,176,255,.25);border-radius:12px;padding:14px 14px 12px;min-width:66px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.countdown__cell::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(127,176,255,.75),transparent)}
+.countdown__num{display:block;font-family:"IBM Plex Mono",monospace;font-size:1.85rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;color:#fff;text-shadow:0 0 14px rgba(127,176,255,.55)}
+.countdown__lbl{display:block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.countdown__sep{font-size:1.4rem;color:rgba(127,176,255,.5)}
+.price-card{max-width:520px;margin:0 auto;background:var(--panel-2);backdrop-filter:blur(14px);border:1px solid rgba(127,176,255,.22);border-radius:24px;padding:38px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.price-card h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}
+.price-card .desc{color:var(--muted);font-size:.96rem;margin-bottom:22px}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-bottom:26px}
+.price-row .price{font-size:3.2rem;font-weight:700;letter-spacing:-.02em}
+.price-row .price-old{font-size:1.5rem;color:var(--muted);text-decoration:line-through}
+.price-row .price-tag{font-size:.9rem;color:var(--muted)}
+.feature-list{list-style:none;text-align:left;display:flex;flex-direction:column;gap:13px;margin-bottom:28px}
+.feature-list li{display:flex;gap:11px;align-items:flex-start;font-size:.97rem}
+.feature-list svg{color:var(--blue-soft);flex-shrink:0;margin-top:4px}
+.feature-list b{color:#fff;font-weight:600}
+.placeholder-note{font-size:.8rem;color:var(--muted);margin-top:12px}
+.noabo{text-align:center;margin-top:30px;font-weight:600;font-size:1.05rem;color:#fff}
+.trust-icons{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.trust-icons__item{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem}
+.trust-icons__item svg{color:var(--blue-soft)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+details{background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:0 24px}
+summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:600;font-size:1.04rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--blue-soft);font-weight:400;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted);font-size:.97rem}
+.final{text-align:center}
+.final h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;letter-spacing:-.025em;max-width:760px;margin:0 auto 14px;line-height:1.08}
+.final p{color:var(--muted);max-width:560px;margin:0 auto 30px}
+.closing-portrait{width:92px;height:92px;border-radius:50%;object-fit:cover;margin:0 auto 18px;border:2px solid rgba(127,176,255,.3);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+footer{background:rgba(7,15,30,.6);border-top:1px solid var(--line);color:var(--muted);padding:52px 0 34px;font-size:.9rem}
+.foot-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+.disclaimer{margin-top:22px;font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.6}
+.copyright{margin-top:16px;font-size:.82rem}
+br.mbr{display:none}
+@media(max-width:880px){
+  .pain-grid,.feat-grid,.uc-grid,.ben-grid{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:repeat(2,1fr);gap:32px 20px}
+  .cmp-grid,.inside-grid,.team-grid{grid-template-columns:1fr}
+  .quote-wrap{flex-direction:column;text-align:center}
+  .nav-links{display:none}
+  section.sect{padding:3.5rem 1.25rem}
+  .countdown{gap:6px}
+  .countdown__cell{min-width:0;flex:1;padding:11px 4px}
+  .countdown__num{font-size:1.4rem}
+  .countdown__sep{display:none}
+  .console__lbl{width:12ch}
+  .hero{padding:66px 18px 56px;min-height:auto}
+  .hero p.sub{font-size:1.08rem}
+  .reviews{gap:14px;flex-direction:row;flex-wrap:nowrap}
+  .reviews img{height:56px}
+  .console-wrap{margin-top:34px}
+  .console__body{font-size:.74rem}
+  .price-card,.inside-card{padding:26px}
+  .cmp,.pain,.feat,.uc,.ben,.step{padding:24px}
+  .btn.lg{font-size:.92rem;padding:16px 26px}
+  .hero-cta{gap:12px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .max-c{padding:0 18px}
+  .foot-top{flex-direction:column;align-items:center;text-align:center}
+  .foot-links{justify-content:center}
+  br.mbr{display:inline}
+  br.dbr{display:none}
+  .inside-grid .sect-h{text-align:center!important}
+}
+@media(max-width:420px){
+  .reviews{flex-direction:row;gap:10px}
+  .reviews img{height:50px}
+  .price-row .price{font-size:2.6rem}
+}
+@media(prefers-reduced-motion:reduce){.border-beam::before,.marquee-track,.logo-marquee__track{animation:none}}
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <nav class="site-nav">
+    <img src="assets/mocotel-logo.png" alt="mocotel IT-Service & Security" class="logo-img">
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#problem">Problem</a><a href="#features">Features</a><a href="#team">Über uns</a><a href="#faq">FAQ</a>
+      </div>
+      <a href="#pricing" class="btn">Jetzt sichern</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero has-fade-bottom">
+  <div class="inner">
+    <div class="reviews">
+      <img src="assets/google-rating.png" alt="Google Rating 4,9 von 5" loading="lazy" onerror="this.style.display='none'">
+      <img src="assets/kunden-rating.png" alt="4,98 von 5 von über 300 Kunden" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <span class="badge">Einführungspreis: 97 € statt 299 €</span>
+    <h1>Das zweite <span class="accent">Gehirn</span><br>für Dein KMU.</h1>
+    <p class="sub"><b>Das KMU-Gehirn-Starterset:</b><br>ein fertiger Obsidian-Vault plus Claude-Skills, die Du einmal installierst. Danach bekommt jeder im Team jede Antwort in Sekunden, mit Quelle. In unter 2 Stunden startklar, kein Abo.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn lg">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a>
+      <a href="#whats-inside" class="btn ghost lg">Was steckt drin?</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="ck">✓</span> Einmal kaufen, einmal einrichten, für immer nutzen</span>
+      <span><span class="ck">✓</span> In unter 2 Stunden startklar</span>
+      <span><span class="ck">✓</span> Aus über 10 Jahren IT-Praxis</span>
+    </div>
+    <div class="console-wrap">
+      <div class="console has-beam">
+        <div class="border-beam"></div>
+        <div class="console__bar">
+          <div class="console__dots"><span class="console__dot"></span><span class="console__dot"></span><span class="console__dot"></span></div>
+          <div class="console__title"><span class="console__title-dot"></span>mocotel-gehirn</div>
+          <div class="console__live"></div>
+        </div>
+        <div class="console__body" id="js-console-body"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- getstrip entfernt -->
+
+<section class="marquee-wrap">
+  <div class="marquee-lbl">Kunden &amp; Partner</div>
+  <div class="marquee-track">
+    <div class="marquee-row"><img src="assets/img/33.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/34.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/35.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/36.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/37.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/38.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/39.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/40.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/41.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/42.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/43.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/partner-microsoft.png" alt="Microsoft Partner" onerror="this.style.display='none'"><img src="assets/partner-gamma.png" alt="Gamma VoIP" onerror="this.style.display='none'"><img src="assets/partner-itsforkids.png" alt="Stiftung It's for Kids" onerror="this.style.display='none'"></div>
+    <div class="marquee-row" aria-hidden="true"><img src="assets/img/33.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/34.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/35.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/36.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/37.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/38.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/39.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/40.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/41.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/42.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/img/43.png" alt="Kundenlogo" onerror="this.style.display='none'"><img src="assets/partner-microsoft.png" alt="Microsoft Partner" onerror="this.style.display='none'"><img src="assets/partner-gamma.png" alt="Gamma VoIP" onerror="this.style.display='none'"><img src="assets/partner-itsforkids.png" alt="Stiftung It's for Kids" onerror="this.style.display='none'"></div>
+  </div>
+</section>
+
+<section class="sect bg-radial-jc has-fade-both" id="problem">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">Kommt Dir das bekannt vor?</span>
+      <h2>Das Wissen steckt in Köpfen, nicht in<br class="mbr">Deiner Firma.</h2>
+      <p>In den meisten Betrieben mit 10 bis 50 Leuten hängt der ganze Laden an einzelnen Personen.<br class="mbr">Das ist kein Delegationsproblem, sondern ein Wissensproblem. Und es kostet Dich jeden Tag<br class="mbr">Zeit, Nerven und Geld.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain"><h3>Alles hängt an Dir.</h3><div class="punch">Erste Urlaubswoche, und das Handy klingelt.</div><p>Eine Kundenfrage, die nur Du beantworten kannst. Ein Angebot, das ohne Deine Freigabe nicht rausgeht. Das Wissen steckt in Deinem Kopf und nirgendwo sonst.</p><div class="fix">Mit mocotel: <b>Dein Team findet die Antwort selbst.</b></div></div>
+      <div class="pain"><h3>Wissen läuft einfach raus.</h3><div class="punch">Peter kündigt, und mit ihm 12 Jahre.</div><p>38 % der Unternehmen verlieren beim Austritt eines Mitarbeiters viele oder alle Informationen. Wissen, das nur in Köpfen steckt, ist kein Asset, sondern ein Risiko.</p><div class="fix">Mit mocotel:<br><b>Das Wissen bleibt in der Firma.</b></div></div>
+      <div class="pain"><h3>Suchen statt arbeiten.</h3><div class="punch">30 Minuten am Tag, pro Kopf.</div><p>42 % der Büroangestellten in KMU suchen täglich über 30 Minuten nach Informationen. Bei 10 Leuten sind das 25+ Stunden pro Woche. Bezahlte Zeit, in der niemand etwas produziert.</p><div class="fix">Mit mocotel: <b>Aus 30 Minuten Suche<br class="mbr">werden 30 Sekunden.</b></div></div>
+    </div>
+    <div class="closer">
+      <strong>Es gibt einen besseren Weg.</strong>
+      <a href="#pricing" class="btn">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sect" style="padding-top:1.5rem">
+  <div class="quote-wrap">
+    <img class="quote-portrait" src="assets/img/clemens-portrait.jpg" alt="Thomas Glaeser, mocotel" loading="lazy" onerror="this.style.display='none'">
+    <div class="quote-body">
+      <blockquote>„Wir haben selbst erlebt, wie viel verloren geht, wenn das Wissen nur in Köpfen steckt. Genau dafür haben wir das KMU-Gehirn gebaut."</blockquote>
+      <div class="who"><b>Thomas Glaeser</b> · mocotel services</div>
+    </div>
+  </div>
+</section>
+
+<section class="sect-tight statbar">
+  <div class="stat-grid">
+    <div class="stat"><div class="num" data-count="300" data-suffix="+">0</div><div class="lab">betreute Unternehmen</div></div>
+    <div class="stat"><div class="num" data-count="10" data-suffix="+">0</div><div class="lab">Jahre am Markt</div></div>
+    <div class="stat"><div class="num" data-count="25" data-suffix="+">0</div><div class="lab">Jahre IT-Praxis im Team</div></div>
+    <div class="stat"><div class="num">&lt;&nbsp;2&nbsp;Std</div><div class="lab">bis alles eingerichtet ist</div></div>
+  </div>
+</section>
+
+<section class="sect bg-radial-soft has-fade-both" id="features">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">Was Dein KMU-Gehirn kann</span>
+      <h2>Ein Wissens-Backend,<br>das <span class="accent">mitwächst</span></h2>
+      <p>Produktionsreife Infrastruktur aus echtem Tagesgeschäft.<br class="dbr">Keine Theorie,<br class="mbr">sondern ein funktionierendes System.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><h3>Vault-Struktur, die mitwächst</h3><p>Eine saubere Grundstruktur fürs gesamte Firmenwissen, die mit Deinem Team wächst<br class="mbr">statt im Chaos zu enden.</p></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Antworten finden statt fragen</h3><p>Jeder stellt seine Frage und bekommt sofort die richtige Antwort, in Sekunden, mit Quelle.</p></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3>Skills lesen &amp; schreiben im Vault</h3><p>Ein vorgefertigtes Skills-Package erledigt wiederkehrende Aufgaben automatisch,<br class="mbr">direkt im Vault.</p></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l4 4v14H5V3h4z"/><path d="M9 12h6M9 16h6"/></svg></div><h3>Activity-Log, das nichts vergisst</h3><p>Jede Entscheidung, jeder Prozess wird festgehalten. Das Firmengedächtnis,<br class="mbr">das niemals Pause macht.</p></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6a3 3 0 010 6M21 20c0-2-1.5-3.6-3.5-4.3"/></svg></div><h3>Customer-Memory pro Account</h3><p>Wissen pro Kunde gebündelt. Jeder im Team weiß sofort, wie der Kunde tickt.</p></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 1 6.5 4.5 6.5 8.5L15 15 9 9l3-6z"/><path d="M5 15c-1 1-1 4-1 4s3 0 4-1"/><circle cx="13.5" cy="8.5" r="1.3"/></svg></div><h3>Onboarding: 3 Tage statt 3 Monate</h3><p>Neue Leute fragen die KI statt die Kollegen und sind in Tagen produktiv, nicht in Monaten.</p></div>
+    </div>
+    <div class="center-cta"><a href="#pricing" class="btn">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a></div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">Was Dein KMU-Gehirn beantwortet</span>
+      <h2>Jede Abteilung.<br><span class="accent">Sofort</span> die richtige Antwort.</h2>
+      <p>Statt zu fragen, zu suchen oder zu warten, stellt jeder seine Frage direkt ans Firmengehirn.<br>Hier ein paar Beispiele aus dem Alltag.</p>
+    </div>
+    <div class="uc-grid">
+      <div class="uc"><div class="dept">Vertrieb</div><ul><li>Welche Konditionen hatte Kunde X zuletzt?</li><li>Wo liegt die aktuelle Angebotsvorlage?</li><li>Wie ist unser Standardrabatt geregelt?</li></ul></div>
+      <div class="uc"><div class="dept">Onboarding</div><ul><li>Wie läuft mein erster Arbeitstag ab?</li><li>Wer ist für welches Thema zuständig?</li><li>Wie setze ich Tool Y richtig auf?</li></ul></div>
+      <div class="uc"><div class="dept">Projekte</div><ul><li>Wie haben wir Projekt Z aufgesetzt?</li><li>Welche Schritte kommen als Nächstes?</li><li>Was war die Abmachung mit dem Kunden?</li></ul></div>
+      <div class="uc"><div class="dept">Support</div><ul><li>Wie lösen wir Problem A standardmäßig?</li><li>Welcher Ansprechpartner ist zuständig?</li><li>Gab es den Fall schon einmal?</li></ul></div>
+      <div class="uc"><div class="dept">Geschäftsführung</div><ul><li>Wie ist Prozess B bei uns definiert?</li><li>Was wurde im letzten Meeting beschlossen?</li><li>Wo steht das Wissen zu Thema C?</li></ul></div>
+      <div class="uc"><div class="dept">Office &amp; Orga</div><ul><li>Wo finde ich die richtige Vorlage?</li><li>Welche Richtlinie gilt für Fall D?</li><li>Wie war der Ablauf nochmal genau?</li></ul></div>
+    </div>
+    <div class="center-cta"><a href="#pricing" class="btn">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a></div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">Der Unterschied</span>
+      <h2>Nicht noch ein<br><span class="accent">ChatGPT-Account</span></h2>
+      <p>Eine KI ohne Dein Firmenwissen ist wie ein brillanter neuer Mitarbeiter, der nichts über Deine Firma weiß.<br class="mbr">Er kann reden, aber liefert nichts, was wirklich passt.</p>
+    </div>
+    <div class="cmp-grid">
+      <div class="cmp bad">
+        <div class="tag">Verstreutes Wissen + generische KI</div>
+        <div class="amount">kostet Dich täglich</div>
+        <ul>
+          <li><span class="m">✕</span> Jeder im Team nutzt KI anders, keiner richtig</li>
+          <li><span class="m">✕</span> Wissen liegt verstreut in Chats,<br class="mbr">Mails und Köpfen</li>
+          <li><span class="m">✕</span> Mittelmäßige Antworten ohne Kontext</li>
+          <li><span class="m">✕</span> Geht ein Mitarbeiter, geht das Wissen mit</li>
+        </ul>
+      </div>
+      <div class="cmp good">
+        <div class="tag">mocotel Starterpaket</div>
+        <div class="amount">97 € einmalig</div>
+        <ul>
+          <li><span class="m">✓</span> Ein System statt Insellösungen</li>
+          <li><span class="m">✓</span> Das gesamte Firmenwissen zentral<br class="mbr">an einem Ort</li>
+          <li><span class="m">✓</span> Antworten mit echtem Firmenkontext<br class="mbr">und Quelle</li>
+          <li><span class="m">✓</span> Das Wissen bleibt, egal wer kommt oder geht</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect bg-radial-jc has-fade-both">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">Dein Team. Erweitert.</span>
+      <h2>Was, wenn jeder <span class="accent">sofort</span> die richtige Antwort hätte?</h2>
+      <p>Genau das passiert, wenn das Wissen Deiner Firma an einem Ort liegt und per KI abrufbar ist.</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben"><h3>Urlaub ohne einen<br>einzigen Anruf</h3><p>Dein Team findet jede Antwort selbst, auch wenn Du weg bist<br class="mbr">oder ein Schlüsselmitarbeiter krank ist.</p></div>
+      <div class="ben"><h3>Kündigung tut nicht mehr weh</h3><p>Der nächste Peter kann gehen. Sein Wissen bleibt im Vault, als echter Unternehmenswert.</p></div>
+      <div class="ben"><h3>Der Tag pro Woche<br>kommt zurück</h3><p>Aus 30 Minuten Suche werden 30 Sekunden. Diese Zeit fließt zurück in Kunden, Projekte und Umsatz.</p></div>
+    </div>
+    <div class="center-cta"><a href="#pricing" class="btn">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a></div>
+  </div>
+</section>
+
+<section class="sect" id="team">
+  <div class="team-grid">
+    <div class="team-photo">
+      <img src="assets/img/gruender-zwei.jpg" alt="Die Gründer von mocotel services" loading="lazy" onerror="this.closest('.team-photo').style.display='none'">
+    </div>
+    <div>
+      <span class="kicker">Wer dahinter steckt</span>
+      <h2>Ein inhabergeführtes <span class="accent">IT-Systemhaus</span>.<br>Kein Tool-Anbieter.</h2>
+      <p>mocotel kommt aus Korschenbroich (NRW), über 10 Jahre am Markt, mehr als 300 betreute Kunden. Wir bauen Dein Firmenwissen so auf, dass Claude damit arbeiten kann, und automatisieren die Fleißarbeit.<br>Aus echter IT-Praxis, nicht aus der Theorie.</p>
+      <div class="team-cred">
+        <span>300+ Kunden</span><span>10+ Jahre am Markt</span><span>Microsoft Partner</span><span>Sophos Silver Partner</span><span>DSGVO-konform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="whats-inside">
+  <div class="inside-grid">
+    <div>
+      <div class="sect-h" style="text-align:left;margin:0 0 2rem">
+        <span class="kicker">Was steckt drin</span>
+        <h2>Dein KMU-Gehirn-Starterset</h2>
+        <p>Alles, um in unter 2 Stunden startklar zu sein.<br>Einmal eingerichtet, dauerhaft nutzbar.</p>
+      </div>
+      <ul>
+        <li><div class="b">01</div><div><strong>Fertiger Obsidian-Vault</strong><span>Sofort einsatzbereite Grundstruktur, die mit Deinem Team mitwächst.</span></div></li>
+        <li><div class="b">02</div><div><strong>Vorgefertigtes Skills-Package</strong><span>Liest und schreibt im Vault, erledigt wiederkehrende Aufgaben automatisch, inkl. Anleitung.</span></div></li>
+        <li><div class="b">03</div><div><strong>KI-Anbindung mit Quelle</strong><span>Jede Frage in Sekunden beantwortet, auf Basis Deines echten Firmenwissens.</span></div></li>
+        <li><div class="b">04</div><div><strong>Schritt-für-Schritt Setup-Guide</strong><span>In unter 2 Stunden startklar, auch ohne Programmierkenntnisse.</span></div></li>
+      </ul>
+    </div>
+    <div class="inside-card">
+      <div class="k">Das Ergebnis</div>
+      <h3>„In 2 Stunden zu einer KI,<br>die Dich nie wieder vergisst."</h3>
+      <p>Aus 30 Minuten Suche werden 30 Sekunden. Kein Nachfragen, kein Wissen, das in einzelnen Köpfen steckt. Ein Firmengedächtnis, auf das sich alle verlassen.</p>
+      <div style="margin-top:26px"><a href="#pricing" class="btn">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">So funktioniert's</span>
+      <h2>Kaufen, einrichten, <span class="accent">nutzen.</span></h2>
+      <p>Kein Projekt, kein Berater nötig. Du installierst das Starterset selbst, in unter 2 Stunden.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step"><div class="step-n">01</div><h3>Kaufen</h3><p>Einmalig 97 € statt 299 €. Kein Abo, kein Kleingedrucktes. Sofort kompletter Zugang<br class="mbr">zum Starterset.</p></div>
+      <div class="step"><div class="step-n">02</div><h3>Einrichten</h3><p>Vault, Skills-Package und KI-Anbindung mit dem Schritt-für-Schritt-Guide installieren. In unter 2 Stunden,<br class="dbr">ohne Programmierkenntnisse.</p></div>
+      <div class="step"><div class="step-n">03</div><h3>Nutzen</h3><p>Jeder im Team fragt, das KMU-Gehirn antwortet in Sekunden, mit Quelle. Dauerhaft, lebenslang.</p></div>
+    </div>
+    <div class="center-cta"><a href="#pricing" class="btn">Jetzt für 97 € sichern <span class="btn-arrow">→</span></a></div>
+  </div>
+</section>
+
+<section class="sect bg-radial-soft has-fade-both" id="pricing">
+  <div class="max-c">
+    <div class="sect-h">
+      <span class="kicker">Preise</span>
+      <h2>Einmal zahlen,<br><span class="accent">lebenslang nutzen.</span></h2>
+      <p>Kein Abo. Keine Folgekosten.<br class="mbr">Einmal das KMU-Gehirn aufsetzen,<br class="dbr">und das Wissen bleibt für immer in Deiner Firma.</p>
+    </div>
+    <div class="countdown-banner">
+      <div class="countdown-banner__title">Einführungspreis: 97 € statt 299 €. Nur für kurze Zeit.</div>
+      <div class="countdown" id="countdown">
+        <div class="countdown__cell"><span class="countdown__num" data-d>02</span><span class="countdown__lbl">Tage</span></div>
+        <div class="countdown__sep">:</div>
+        <div class="countdown__cell"><span class="countdown__num" data-h>00</span><span class="countdown__lbl">Std</span></div>
+        <div class="countdown__sep">:</div>
+        <div class="countdown__cell"><span class="countdown__num" data-m>00</span><span class="countdown__lbl">Min</span></div>
+        <div class="countdown__sep">:</div>
+        <div class="countdown__cell"><span class="countdown__num" data-s>00</span><span class="countdown__lbl">Sek</span></div>
+      </div>
+    </div>
+    <div class="price-card has-beam">
+      <div class="border-beam"></div>
+      <h3>KMU-Gehirn · Starterset</h3>
+      <p class="desc">Das komplette zweite Gehirn für Dein Unternehmen: Vault, Skills-Package, KI-Anbindung und Setup-Guide.<br>Lebenslang, ohne Abo.</p>
+      <div class="price-row">
+        <span class="price">97 €</span><span class="price-old">299 €</span><span class="price-tag">einmalig</span>
+      </div>
+      <ul class="feature-list">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Fertiger Obsidian-Vault</b>, sofort einsatzbereit</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Skills-Package</b>, das Aufgaben automatisch erledigt</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>KI-Antworten mit Quelle</b>, in Sekunden statt Suchen</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Setup-Guide</b>, in unter 2 Stunden startklar</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>Einmalig, kein Abo, lebenslang nutzbar</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>Kostenlose Updates inklusive</span></li>
+      </ul>
+      <a href="https://buy.stripe.com/4gM28q0Qa1l985OaQS0co00?prefilled_promo_code=LAUNCH100" class="btn pay lg" id="buy-stripe" target="_blank" rel="noopener">Jetzt für 97 € statt 299 € sichern <span class="btn-arrow">→</span></a>
+      <div class="placeholder-note">🔒 Sichere Bezahlung über Stripe · sofortiger Zugang zum Starterset.</div>
+    </div>
+    <div class="noabo">Kein Abo. Eine Zahlung, lebenslanger Zugang.</div>
+    <div class="trust-icons">
+      <div class="trust-icons__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Einmal zahlen, für immer behalten</span></div>
+      <div class="trust-icons__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v6h-6"/></svg><span>Kostenlose Updates inklusive</span></div>
+      <div class="trust-icons__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Daten bleiben bei Dir (DSGVO-konform)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="faq">
+  <div class="max-c">
+    <div class="sect-h"><span class="kicker">FAQ</span><h2>Häufige Fragen</h2></div>
+    <div class="faq-list">
+      <details open><summary>Was bekomme ich nach dem Kauf?</summary><p>Sofort Zugang zum kompletten KMU-Gehirn-Starterset: fertiger Obsidian-Vault, Skills-Package, KI-Anbindung und Setup-Guide. In unter 2 Stunden startklar.</p></details>
+      <details><summary>Brauche ich Programmierkenntnisse?</summary><p>Nein. Der Setup-Guide führt Dich Schritt für Schritt durch die Einrichtung. Danach arbeitest Du mit natürlicher Sprache, wie in einem Gespräch.</p></details>
+      <details><summary>Was passiert mit meinen Firmendaten?</summary><p>Dein Wissen bleibt bei Dir. mocotel kommt aus der IT mit über 10 Jahren Praxis, Microsoft- und Sophos-Partner, DSGVO-konform. Datensicherheit ist von Anfang an mitgedacht.</p></details>
+      <details><summary>Ist das ein Abo?</summary><p>Nein. Du zahlst einmalig 97 € (statt 299 €) und behältst das Starterset dauerhaft. Keine monatlichen Gebühren, kostenlose Updates inklusive.</p></details>
+      <details><summary>Kann das ganze Team es nutzen?</summary><p>Ja. Vault und Skills sind für den Einsatz im Team gebaut. Jeder im Unternehmen stellt seine Fragen und bekommt sofort die passende Antwort.</p></details>
+      <details><summary>Wir nutzen schon ChatGPT, wozu das?</summary><p>Eine KI ohne Firmenkontext liefert generische Ergebnisse. Das Starterset gibt der KI das Wissen Deiner Firma, so beantwortet sie Fragen mit Euren echten Inhalten und zitiert Quellen.</p></details>
+    </div>
+  </div>
+</section>
+
+
+<section class="sect-wide bg-radial-soft has-fade-top final">
+  <div class="max-c">
+    <img class="closing-portrait" src="assets/img/ansprechpartner.jpg" alt="Dein Ansprechpartner bei mocotel" loading="lazy" onerror="this.style.display='none'">
+    <span class="kicker">Dein Ansprechpartner bei mocotel</span>
+    <h2>Hör auf, dasselbe immer wieder zu erklären. Fang an, das Wissen zu sichern.</h2>
+    <p>Richte das Gedächtnis Deiner Firma in unter 2 Stunden ein.<br>Eines, das nie wieder etwas vergisst.</p>
+    <a href="#pricing" class="btn lg">Jetzt für 97 € statt 299 € sichern <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="max-c">
+    <div class="foot-top">
+      <img src="assets/mocotel-logo.png" alt="mocotel IT-Service & Security" class="foot-logo">
+      <div class="foot-links">
+        <a href="#features">Features</a><a href="#pricing">Preise</a><a href="mailto:info@mocotel.de">Kontakt</a><a href="https://mocotel.de/impressum" target="_blank" rel="noopener">Impressum</a><a href="https://mocotel.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a><a href="https://mocotel.de/agb/" target="_blank" rel="noopener">AGB</a>
+      </div>
+    </div>
+    <p class="disclaimer">Diese Website ist nicht Teil der Facebook-Website oder der Facebook Inc. Außerdem wird diese Website in keiner Weise von Facebook unterstützt. FACEBOOK ist eine Marke von FACEBOOK, Inc.<br>This site is not a part of the Facebook™ website or Facebook™ Inc. Additionally, this site is NOT endorsed by Facebook™ in any way.</p>
+    <p class="copyright">© 2026 mocotel services. Alle Rechte vorbehalten.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KEY="mocotel_offer_deadline", WINDOW_MS=3*24*60*60*1000, deadline;
+  try{ deadline=parseInt(localStorage.getItem(KEY),10); if(!deadline||isNaN(deadline)||deadline<Date.now()){ deadline=Date.now()+WINDOW_MS; localStorage.setItem(KEY,deadline); } }catch(e){ deadline=Date.now()+WINDOW_MS; }
+  function p(n){return String(n).padStart(2,"0");}
+  var d=document.querySelector("[data-d]"),h=document.querySelector("[data-h]"),m=document.querySelector("[data-m]"),s=document.querySelector("[data-s]");
+  function tick(){var diff=Math.max(0,deadline-Date.now());if(d)d.textContent=p(Math.floor(diff/86400000));if(h)h.textContent=p(Math.floor(diff%86400000/3600000));if(m)m.textContent=p(Math.floor(diff%3600000/60000));if(s)s.textContent=p(Math.floor(diff%60000/1000));}
+  tick(); setInterval(tick,1000);
+})();
+(function(){
+  var els=document.querySelectorAll("[data-count]");
+  function run(el){var target=parseInt(el.getAttribute("data-count"),10),suf=el.getAttribute("data-suffix")||"",t0=null,dur=1100;function step(ts){if(!t0)t0=ts;var pr=Math.min((ts-t0)/dur,1);el.textContent=Math.floor(pr*target)+(pr===1?suf:"");if(pr<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});els.forEach(function(el){io.observe(el);});}else{els.forEach(run);}
+})();
+(function(){
+  var body=document.getElementById("js-console-body"); if(!body) return;
+  var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms);});};
+  function typeInto(el,text,cd){cd=cd||22;return new Promise(async function(res){for(var i=0;i<text.length;i++){el.textContent+=text[i];await sleep(cd+(Math.random()*20-10));}res();});}
+  var lines=[
+    {type:"kv",label:"vault",value:"✓ Firmenwissen indexiert"},{type:"kv",label:"skills",value:"✓ Package aktiv"},
+    {type:"kv",label:"antwort",value:"✓ mit Quelle"},{type:"kv",label:"activity-log",value:"✓ nichts vergessen"},
+    {type:"kv",label:"onboarding",value:"✓ in 3 Tagen"},{type:"kv",label:"sicherheit",value:"✓ DSGVO-konform"},
+    {type:"group",heading:"Im Vault",items:["angebote","kunden","prozesse","onboarding","vorlagen","projekte","support","faq"]},
+    {type:"group",heading:"Abteilungen bereit",items:["vertrieb","onboarding","projekte","support","geschäftsführung","office"]},
+    {type:"prompt",text:"Bereit. Was möchtest Du wissen?"},{type:"cursor"}
+  ];
+  async function start(){
+    for(var k=0;k<lines.length;k++){var line=lines[k];
+      if(line.type==="kv"){var l=document.createElement("div");l.className="console__line";var a=document.createElement("span");a.className="console__lbl";var b=document.createElement("span");b.className="console__check";l.appendChild(a);l.appendChild(b);body.appendChild(l);await typeInto(a,line.label,18);await sleep(50);await typeInto(b,line.value,20);await sleep(110);}
+      else if(line.type==="group"){var hh=document.createElement("div");hh.className="console__group-h";body.appendChild(hh);await typeInto(hh,line.heading,18);await sleep(70);var it=document.createElement("div");it.className="console__items";body.appendChild(it);await typeInto(it,line.items.join(" · "),9);await sleep(140);}
+      else if(line.type==="prompt"){var lp=document.createElement("div");lp.className="console__line";var pr=document.createElement("span");pr.className="console__prompt";lp.appendChild(pr);body.appendChild(lp);await sleep(160);await typeInto(pr,line.text,22);await sleep(180);}
+      else if(line.type==="cursor"){var lc=document.createElement("div");lc.className="console__line";lc.innerHTML='<span class="console__prompt">$&nbsp;<span class="console__cursor"></span></span>';body.appendChild(lc);}
+    }
+  }
+  var started=false;function maybe(){if(started)return;started=true;start();}
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){maybe();io.disconnect();}});},{threshold:.3});io.observe(body);}else{maybe();}
+})();
+</script>
+</body>
+</html>
