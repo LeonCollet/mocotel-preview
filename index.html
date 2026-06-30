@@ -58,17 +58,20 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .nav-links a:hover{color:#fff}
 .site-nav .btn{padding:10px 20px;font-size:.8rem;box-shadow:none}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px 72px;
-  background:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(48,88,162,.30), transparent 62%),linear-gradient(180deg, rgba(10,23,48,.86), rgba(10,23,48,.95)),#0A1730 url('assets/img/arbeit-pc.jpg') center/cover no-repeat;}
+  background:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(48,88,162,.30), transparent 62%),linear-gradient(180deg, rgba(8,18,38,.93), rgba(8,18,38,.98)),#0A1730 url('assets/img/arbeit-pc.jpg') center/cover no-repeat;}
 .hero .inner{max-width:760px;width:100%}
+.hero-grid{max-width:1120px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;text-align:left}
+.hero-left{min-width:0}
+.hero-right{min-width:0}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(48,88,162,.18);border:1px solid rgba(48,88,162,.5);color:#cfe0fb;font-weight:600;font-size:.85rem;padding:8px 18px;border-radius:555px;margin-bottom:24px}
 .hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04}
-.hero p.sub{color:var(--muted);font-size:1.24rem;max-width:620px;margin:24px auto 32px}
+.hero p.sub{color:var(--muted);font-size:1.2rem;max-width:600px;margin:22px 0 30px}
 .hero p.sub b{color:#fff;font-weight:600}
-.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.hero-meta{margin-top:30px;display:flex;gap:12px 28px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:.93rem}
+.hero-cta{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
+.hero-meta{margin-top:26px;display:flex;flex-direction:column;gap:8px;justify-content:flex-start;color:var(--muted);font-size:.93rem}
 .hero-meta span{display:inline-flex;align-items:center;gap:8px}
 .ck{color:var(--blue-soft);font-weight:700}
-.console-wrap{max-width:720px;margin:46px auto 0;position:relative;isolation:isolate}
+.console-wrap{max-width:none;margin:0;position:relative;isolation:isolate}
 .console{position:relative;border-radius:14px;overflow:hidden;text-align:left;font-family:"IBM Plex Mono",ui-monospace,monospace;background:linear-gradient(180deg,rgba(29,55,102,.5),rgba(9,19,37,.92));border:1px solid rgba(127,176,255,.18);box-shadow:0 30px 80px -25px rgba(48,88,162,.5),inset 0 0 0 1px rgba(255,255,255,.04)}
 .console__bar{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.3)}
 .console__dots{display:inline-flex;gap:6px}
@@ -101,7 +104,7 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .marquee-row span{font-weight:600;font-size:1.15rem;color:rgba(255,255,255,.55);white-space:nowrap}
 .marquee-row img{height:56px;width:auto;object-fit:contain;opacity:.9;transition:opacity .2s;border-radius:8px}
 .marquee-row img:hover{opacity:1}
-.reviews{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+.reviews{display:flex;gap:20px;justify-content:flex-start;align-items:center;flex-wrap:wrap;margin-top:24px}
 .reviews img{height:100px;width:auto;border-radius:10px}
 .logo-marquee{overflow:hidden;width:100%;padding:6px 0}
 .logo-marquee__track{display:flex;width:max-content;animation:scroll-x 48s linear infinite}
@@ -245,6 +248,11 @@ br.mbr{display:none}
   .countdown__sep{display:none}
   .console__lbl{width:12ch}
   .hero{padding:66px 18px 56px;min-height:auto}
+  .hero-grid{grid-template-columns:1fr;gap:26px;text-align:center}
+  .hero-cta,.hero-meta,.reviews{justify-content:center}
+  .hero-meta{align-items:center}
+  .hero-left p.sub{margin-left:auto;margin-right:auto}
+  .console-wrap{max-width:720px;margin:0 auto}
   .hero p.sub{font-size:1.08rem}
   .reviews{gap:14px;flex-direction:row;flex-wrap:nowrap}
   .reviews img{height:56px}
@@ -288,11 +296,8 @@ br.mbr{display:none}
 <main>
 
 <section class="hero has-fade-bottom">
-  <div class="inner">
-    <div class="reviews">
-      <img src="assets/google-rating.png" alt="Google Rating 4,9 von 5" loading="lazy" onerror="this.style.display='none'">
-      <img src="assets/kunden-rating.png" alt="4,98 von 5 von über 300 Kunden" loading="lazy" onerror="this.style.display='none'">
-    </div>
+  <div class="inner hero-grid">
+    <div class="hero-left">
     <span class="badge">Einführungspreis: 97 € statt 299 €</span>
     <h1>Das zweite <span class="accent">Gehirn</span><br>für Dein KMU.</h1>
     <p class="sub"><b>Das KMU-Gehirn-Starterset:</b><br>ein fertiger Obsidian-Vault plus Claude-Skills, die Du einmal installierst. Danach bekommt jeder im Team jede Antwort in Sekunden, mit Quelle. In unter 2 Stunden startklar, kein Abo.</p>
@@ -305,6 +310,12 @@ br.mbr{display:none}
       <span><span class="ck">✓</span> In unter 2 Stunden startklar</span>
       <span><span class="ck">✓</span> Aus über 10 Jahren IT-Praxis</span>
     </div>
+    <div class="reviews">
+      <img src="assets/google-rating.png" alt="Google Rating 4,9 von 5" loading="lazy" onerror="this.style.display='none'">
+      <img src="assets/kunden-rating.png" alt="4,98 von 5 von über 300 Kunden" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    </div>
+    <div class="hero-right">
     <div class="console-wrap">
       <div class="console has-beam">
         <div class="border-beam"></div>
@@ -315,6 +326,7 @@ br.mbr{display:none}
         </div>
         <div class="console__body" id="js-console-body"></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
