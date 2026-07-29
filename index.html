@@ -645,5 +645,71 @@ br.mbr{display:none}
   if("IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){maybe();io.disconnect();}});},{threshold:.3});io.observe(body);}else{maybe();}
 })();
 </script>
+
+<script>
+  /* Startseite / Starterset – nur PageView automatisch, Klick auf Kauf = InitiateCheckout */
+  window._fbPixelReady = [];
+  document.addEventListener('DOMContentLoaded', function(){
+    var b = document.getElementById('buy-stripe');
+    if(b) b.addEventListener('click', function(){ if(window.fbTrack) fbTrack('InitiateCheckout', {content_name:'KMU-Gehirn Starterset', value:0.00, currency:'EUR'}); });
+  });
+</script>
+
+<!-- ===== Cookie-Consent + Meta-Pixel (feuert nur nach Zustimmung) ===== -->
+<style>
+#cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0A1730;border-top:1px solid rgba(127,176,255,.25);color:#fff;padding:18px 20px;font-size:.9rem;line-height:1.5;display:none;box-shadow:0 -10px 40px rgba(0,0,0,.45)}
+#cc-banner.show{display:block}
+#cc-inner{max-width:1120px;margin:0 auto;display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+#cc-text{flex:1;min-width:240px;color:rgba(255,255,255,.82)}
+#cc-text a{color:#7FB0FF;text-decoration:underline}
+#cc-btns{display:flex;gap:10px;flex-wrap:wrap}
+.cc-btn{cursor:pointer;border-radius:10px;padding:12px 22px;font-weight:600;font-size:.86rem;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font-family:inherit}
+.cc-btn:hover{background:rgba(255,255,255,.12)}
+.cc-btn.accept{background:linear-gradient(90deg,#1D3766,#3058A2);border-color:rgba(127,176,255,.45)}
+#cc-reopen{position:fixed;left:14px;bottom:14px;z-index:99998;font-size:.74rem;color:rgba(255,255,255,.55);background:rgba(10,23,48,.82);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:6px 11px;cursor:pointer;display:none;font-family:inherit}
+</style>
+<div id="cc-banner" role="dialog" aria-label="Cookie-Einstellungen">
+  <div id="cc-inner">
+    <div id="cc-text">Wir verwenden Cookies und den Meta-Pixel (Facebook/Instagram), um die Nutzung dieser Seite zu messen und unsere Werbung auszuwerten. Notwendige Cookies sind immer aktiv. Mehr in unserer <a href="https://mocotel.de/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</div>
+    <div id="cc-btns">
+      <button class="cc-btn" id="cc-decline" type="button">Nur notwendige</button>
+      <button class="cc-btn accept" id="cc-accept" type="button">Alle akzeptieren</button>
+    </div>
+  </div>
+</div>
+<button id="cc-reopen" type="button">Cookie-Einstellungen</button>
+<script>
+(function(){
+  var PIXEL_ID = "1585916209847968";   /* Meta-Pixel-ID mocotel */
+  var KEY = "mocotel_consent";
+  var loaded = false;
+  window.fbTrack = function(ev,p){ if(window.fbq) fbq('track', ev, p||{}); };
+  function loadPixel(){
+    if(loaded || PIXEL_ID === "META_PIXEL_ID_HIER") return;
+    loaded = true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+    (window._fbPixelReady||[]).forEach(function(fn){ try{fn();}catch(e){} });
+  }
+  function hideBanner(){ var b=document.getElementById('cc-banner'); if(b) b.classList.remove('show'); var r=document.getElementById('cc-reopen'); if(r) r.style.display='block'; }
+  function setConsent(v){ try{localStorage.setItem(KEY,v);}catch(e){} hideBanner(); if(v==='granted') loadPixel(); }
+  function init(){
+    var c=null; try{c=localStorage.getItem(KEY);}catch(e){}
+    var banner=document.getElementById('cc-banner');
+    var r=document.getElementById('cc-reopen');
+    if(c==='granted'){ loadPixel(); if(r) r.style.display='block'; }
+    else if(c==='denied'){ if(r) r.style.display='block'; }
+    else if(banner){ banner.classList.add('show'); }
+    var a=document.getElementById('cc-accept'), d=document.getElementById('cc-decline');
+    if(a) a.onclick=function(){ setConsent('granted'); };
+    if(d) d.onclick=function(){ setConsent('denied'); };
+    if(r) r.onclick=function(){ if(banner) banner.classList.add('show'); };
+  }
+  if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+<!-- ===== /Cookie-Consent + Meta-Pixel ===== -->
+
 </body>
 </html>
