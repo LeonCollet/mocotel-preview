@@ -409,9 +409,6 @@ br.mbr{display:none}
       <!-- GARANTIE (Vorschlag Andi, erst live schalten nach Freigabe durch Clemens):
       <div class="placeholder-note">14 Tage risikofrei: Läuft Dein KMU-Gehirn nach der Masterclass nicht, schreib uns eine Mail und Du bekommst Dein Geld zurück.</div>
       -->
-      <!-- ============ PLATZHALTER DECLINE-LINK: href = Downloadseite Starterset ============ -->
-      <a href="#WEITER-ZUM-STARTERSET" class="decline">Nein danke, ich richte alles mit dem schriftlichen Guide ein und verzichte auf den Einführungspreis.</a>
-      <!-- ============ /PLATZHALTER DECLINE-LINK ============ -->
     </div>
     <div class="noabo">Kein Abo. Einmal sichern, für immer ansehen.</div>
     <div class="trust-icons">
@@ -443,9 +440,6 @@ br.mbr{display:none}
     <h2>Das Werkzeug hast Du schon. Jetzt entscheidet sich, ob Deine Firma es nutzt.</h2>
     <p>Es gibt zwei Arten von Startersets: die, die im Download-Ordner liegen, und die, die jede Woche Stunden zurückholen. <br class="dbr">Der Unterschied kostet einmalig 47&nbsp;€ und einen Abend.</p>
     <a href="#pricing" class="btn lg">Masterclass für 47&nbsp;€ sichern (statt 249&nbsp;€) <span class="btn-arrow">→</span></a>
-    <!-- ============ PLATZHALTER DECLINE-LINK: href = Downloadseite Starterset ============ -->
-    <a href="#WEITER-ZUM-STARTERSET" class="decline">Nein danke, weiter zu meinem Starterset ohne Angebot.</a>
-    <!-- ============ /PLATZHALTER DECLINE-LINK ============ -->
   </div>
 </section>
 
@@ -505,6 +499,28 @@ br.mbr{display:none}
     var b = document.getElementById('buy-stripe');
     if(b) b.addEventListener('click', function(){ if(window.fbTrack) fbTrack('InitiateCheckout', {content_name:'KMU-Gehirn Masterclass', value:47.00, currency:'EUR'}); });
   });
+</script>
+
+<script>
+  /* UTM-Attribution: UTMs merken und als client_reference_id (campaign|content|source) an die Stripe-Links haengen */
+  (function(){
+    function collectUTMs(){
+      var p=new URLSearchParams(location.search), keys=['utm_campaign','utm_content','utm_source'], found={}, any=false;
+      keys.forEach(function(k){ var v=p.get(k); if(v){ found[k]=v; any=true; } });
+      if(any){ try{ localStorage.setItem('mocotel_utms', JSON.stringify(found)); }catch(e){} }
+      var stored={}; try{ stored=JSON.parse(localStorage.getItem('mocotel_utms')||'{}'); }catch(e){}
+      return Object.assign({}, stored, found);
+    }
+    function apply(){
+      var u=collectUTMs();
+      var crid=u.utm_content||'';
+      if(!crid) return; /* kein Creative -> nichts anhaengen */
+      var a=document.getElementById('buy-stripe');
+      if(!a) return;
+      try{ var url=new URL(a.href); url.searchParams.set('client_reference_id', crid); a.href=url.toString(); }catch(e){}
+    }
+    if(document.readyState!=='loading') apply(); else document.addEventListener('DOMContentLoaded', apply);
+  })();
 </script>
 
 <!-- ===== Cookie-Consent + Meta-Pixel (feuert nur nach Zustimmung) ===== -->
