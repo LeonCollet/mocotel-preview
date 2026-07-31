@@ -76,13 +76,96 @@ footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0;font-s
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>100 % kostenlos und unverbindlich, ca. 20 Minuten</span></li>
       </ul>
       <!-- PLATZHALTER: href = Buchungslink Erstgespraech (von Leon) -->
-      <a href="#ERSTGESPRAECH-BUCHEN" class="btn" id="book-call" target="_blank" rel="noopener">Kostenloses Erstgespräch buchen &nbsp;→</a>
+      <a href="#ERSTGESPRAECH-BUCHEN" class="btn" id="book-call" data-track="book_call" target="_blank" rel="noopener">Kostenloses Erstgespräch buchen &nbsp;→</a>
     </div>
     <p class="support">Fragen oder keine Mail erhalten? Schreib uns an <a href="mailto:info@mocotel.de">info@mocotel.de</a>.</p>
   </div>
 </main>
 
 <footer>© 2026 mocotel services. Alle Rechte vorbehalten.</footer>
+
+<!-- ===== First-Party Funnel-Tracking (nur nach Consent) ===== -->
+<script>
+(function(){
+  /* ----- Zentrale Konfiguration (anpassen) ----- */
+  var DASHBOARD_URL = "https://analytics.justclose.de"; /* <DASHBOARD_URL> */
+  var FUNNEL_KEY    = "mokotel";                        /* <FUNNEL_KEY> */
+  /* ----- Seiten-Konfiguration ----- */
+  var STEP               = "danke";
+  var STEP_INDEX         = 2;
+  var IS_CONVERSION_PAGE = true;
+  var CONVERSION_VALUE   = 47;
+  /* -------------------------------- */
+
+  function consentGranted(){ try{ return localStorage.getItem('mocotel_consent')==='granted'; }catch(e){ return false; } }
+
+  var started=false;
+  function initTracking(){
+    if(started) return; started=true;
+
+    function uuid(){
+      try{ if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(e){}
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c==='x'?r:(r&0x3|0x8);return v.toString(16);});
+    }
+    function visitorId(){ try{ var v=localStorage.getItem('jc_visitor_id'); if(!v){ v=uuid(); localStorage.setItem('jc_visitor_id',v); } return v; }catch(e){ return uuid(); } }
+    function sessionId(){ try{ var v=sessionStorage.getItem('jc_session_id'); if(!v){ v=uuid(); sessionStorage.setItem('jc_session_id',v); } return v; }catch(e){ return uuid(); } }
+    function device(){ var ua=navigator.userAgent||''; if(/iPad|Tablet|PlayBook|Silk/i.test(ua) || (/Android/i.test(ua) && !/Mobile/i.test(ua))) return 'tablet'; if(/Mobi|iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry/i.test(ua)) return 'mobile'; if(/Mozilla|Chrome|Safari|Firefox|Edg|OPR/i.test(ua)) return 'desktop'; return 'other'; }
+    function utm(){
+      try{
+        var p=new URLSearchParams(location.search);
+        var u={campaign:p.get('utm_campaign')||'', id:p.get('utm_id')||'', source:p.get('utm_source')||'', content:p.get('utm_content')||''};
+        if(u.campaign||u.id||u.source||u.content){ sessionStorage.setItem('jc_utm', JSON.stringify(u)); return u; }
+        var s=sessionStorage.getItem('jc_utm'); if(s) return JSON.parse(s);
+        return u;
+      }catch(e){ return {campaign:'',id:'',source:'',content:''}; }
+    }
+
+    var VISITOR=visitorId(), SESSION=sessionId(), DEVICE=device(), UTM=utm(), LOAD=Date.now();
+
+    function payload(evt, extra){
+      var o={event:evt, funnelKey:FUNNEL_KEY, visitorId:VISITOR, sessionId:SESSION, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
+      if(extra){ for(var k in extra){ o[k]=extra[k]; } }
+      return o;
+    }
+    function send(evt, extra, beacon){
+      var endpoint=DASHBOARD_URL+"/api/funnel/track";
+      try{
+        var body=JSON.stringify(payload(evt, extra));
+        if(beacon && navigator.sendBeacon){ navigator.sendBeacon(endpoint, new Blob([body],{type:'application/json'})); }
+        else{ fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:body,keepalive:true,mode:'cors',credentials:'omit'}).catch(function(){}); }
+      }catch(e){}
+    }
+
+    /* 1) page_view */
+    send('page_view');
+
+    /* 4) conversion beim Erreichen einer Conversion-Seite mit vorherigem Stripe-Klick */
+    if(IS_CONVERSION_PAGE){
+      try{ if(localStorage.getItem('jc_stripe_click')){ send('conversion', {value:CONVERSION_VALUE}); localStorage.removeItem('jc_stripe_click'); } }catch(e){}
+    }
+
+    /* 3) button_click auf [data-track] + Stripe-Flag setzen */
+    document.addEventListener('click', function(e){
+      var el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+      if(!el) return;
+      var name = el.getAttribute('data-track');
+      send('button_click', {button:name});
+      if(name==='stripe_checkout'){ try{ localStorage.setItem('jc_stripe_click', String(Date.now())); }catch(e2){} }
+    }, true);
+
+    /* 2) page_exit via sendBeacon (mit dwellMs) */
+    var exitSent=false;
+    function sendExit(){ if(exitSent) return; exitSent=true; send('page_exit', {dwellMs: Date.now()-LOAD}, true); }
+    document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden') sendExit(); });
+    window.addEventListener('pagehide', sendExit);
+  }
+
+  /* Consent-Gate: nur nach "Alle akzeptieren" */
+  if(consentGranted()) initTracking();
+  else window.addEventListener('mocotel:consent-granted', initTracking, {once:true});
+})();
+</script>
+<!-- ===== /First-Party Funnel-Tracking ===== -->
 
 <!-- ===== Cookie-Consent + Meta-Pixel (feuert nur nach Zustimmung) ===== -->
 <style>
@@ -126,7 +209,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0;font-s
     (window._fbPixelReady||[]).forEach(function(fn){ try{fn();}catch(e){} });
   }
   function hideBanner(){ var b=document.getElementById('cc-banner'); if(b) b.classList.remove('show'); var r=document.getElementById('cc-reopen'); if(r) r.style.display='block'; }
-  function setConsent(v){ try{localStorage.setItem(KEY,v);}catch(e){} hideBanner(); if(v==='granted') loadPixel(); }
+  function setConsent(v){ try{localStorage.setItem(KEY,v);}catch(e){} hideBanner(); if(v==='granted'){ loadPixel(); try{ window.dispatchEvent(new Event('mocotel:consent-granted')); }catch(e){} } }
   function init(){
     var c=null; try{c=localStorage.getItem(KEY);}catch(e){}
     var banner=document.getElementById('cc-banner');
