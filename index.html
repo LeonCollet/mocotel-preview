@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://js.stripe.com">
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
 <style>
 :root{
   --navy:#0E2240;--navy-2:#0A1730;--panel:rgba(255,255,255,.045);--panel-2:rgba(9,19,37,.55);
@@ -556,7 +558,9 @@ br.mbr{display:none}
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>Einmalig, kein Abo, lebenslang nutzbar</span></li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>Kostenlose Updates inklusive</span></li>
       </ul>
-      <a href="https://buy.stripe.com/cNicN4gP80h571K2km0co01?prefilled_promo_code=LAUNCH100" class="btn pay lg" id="buy-stripe" data-track="stripe_checkout" target="_blank" rel="noopener">Jetzt gratis sichern (statt 97 €) <span class="btn-arrow">→</span></a>
+      <div class="pay-wrap" data-track="stripe_checkout" style="display:flex;justify-content:center;margin:0 auto">
+        <stripe-buy-button id="buy-stripe" buy-button-id="buy_btn_1U0MYjC125U0VjSHYzsYF18Z" publishable-key="pk_live_51Tl7sgC125U0VjSHrzt8TeZIfwZiVSLR6GIi1OQhP2ATS9E7j3fjM646rKSvauw7rDe8yAMEqDmGnt7ZNIG0UcNN00gTQ0k0C2"></stripe-buy-button>
+      </div>
       <div class="placeholder-note">🔒 Sichere Bezahlung über Stripe · sofortiger Zugang zum Starterset.</div>
     </div>
     <div class="noabo">Kein Abo. Einmal sichern, für immer nutzen.</div>
@@ -647,7 +651,7 @@ br.mbr{display:none}
 </script>
 
 <script>
-  /* Startseite / Starterset – nur PageView automatisch, Klick auf Kauf = InitiateCheckout */
+  /* Startseite / Starterset, nur PageView automatisch, Klick auf Kauf = InitiateCheckout */
   window._fbPixelReady = [];
   document.addEventListener('DOMContentLoaded', function(){
     var b = document.getElementById('buy-stripe');
@@ -667,11 +671,10 @@ br.mbr{display:none}
     }
     function apply(){
       var u=collectUTMs();
-      var crid=u.utm_content||'';
-      if(!crid) return; /* kein Creative -> nichts anhaengen */
-      var a=document.getElementById('buy-stripe');
-      if(!a) return;
-      try{ var url=new URL(a.href); url.searchParams.set('client_reference_id', crid); a.href=url.toString(); }catch(e){}
+      var crid="A~"+(u.utm_content||'');
+      var el=document.getElementById('buy-stripe');
+      if(!el) return;
+      try{ if(el.tagName && el.tagName.toLowerCase()==='stripe-buy-button'){ el.setAttribute('client-reference-id', crid); } else if(el.href){ var url=new URL(el.href); url.searchParams.set('client_reference_id', crid); el.href=url.toString(); } }catch(e){}
     }
     if(document.readyState!=='loading') apply(); else document.addEventListener('DOMContentLoaded', apply);
   })();
@@ -694,7 +697,7 @@ br.mbr{display:none}
 
   function send(evt, extra, beacon){
     var endpoint=DASHBOARD_URL+"/api/funnel/track";
-    var o={event:evt, funnelKey:FUNNEL_KEY, anonymous:true, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
+    var o={event:evt, funnelKey:FUNNEL_KEY, anonymous:true, variant:"A", step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
     if(extra){ for(var k in extra){ o[k]=extra[k]; } }
     try{
       var body=JSON.stringify(o);
@@ -760,7 +763,7 @@ br.mbr{display:none}
     var VISITOR=visitorId(), SESSION=sessionId(), DEVICE=device(), UTM=utm(), LOAD=Date.now();
 
     function payload(evt, extra){
-      var o={event:evt, funnelKey:FUNNEL_KEY, visitorId:VISITOR, sessionId:SESSION, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
+      var o={event:evt, funnelKey:FUNNEL_KEY, variant:"A", visitorId:VISITOR, sessionId:SESSION, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
       if(extra){ for(var k in extra){ o[k]=extra[k]; } }
       return o;
     }
