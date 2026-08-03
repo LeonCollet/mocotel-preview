@@ -84,6 +84,50 @@ footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0;font-s
 
 <footer>© 2026 mocotel services. Alle Rechte vorbehalten.</footer>
 
+<!-- ===== Anonyme Funnel-Views (cookieless, ohne Consent) ===== -->
+<script>
+(function(){
+  /* ----- Zentrale Konfiguration (anpassen) ----- */
+  var DASHBOARD_URL = "https://analytics.justclose.de"; /* <DASHBOARD_URL> */
+  var FUNNEL_KEY    = "mokotel";                        /* <FUNNEL_KEY> */
+  var STEP          = "danke";
+  var STEP_INDEX    = 2;
+  /* Anonym: KEIN Storage, KEINE visitorId/sessionId, KEINE Cookies. Nur aggregierte Views. */
+
+  function device(){ var ua=navigator.userAgent||''; if(/iPad|Tablet|PlayBook|Silk/i.test(ua) || (/Android/i.test(ua) && !/Mobile/i.test(ua))) return 'tablet'; if(/Mobi|iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry/i.test(ua)) return 'mobile'; if(/Mozilla|Chrome|Safari|Firefox|Edg|OPR/i.test(ua)) return 'desktop'; return 'other'; }
+  function utm(){ try{ var p=new URLSearchParams(location.search); return {campaign:p.get('utm_campaign')||'', id:p.get('utm_id')||'', source:p.get('utm_source')||'', content:p.get('utm_content')||''}; }catch(e){ return {campaign:'',id:'',source:'',content:''}; } }
+
+  var DEVICE=device(), UTM=utm(), LOAD=Date.now();
+
+  function send(evt, extra, beacon){
+    var endpoint=DASHBOARD_URL+"/api/funnel/track";
+    var o={event:evt, funnelKey:FUNNEL_KEY, anonymous:true, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
+    if(extra){ for(var k in extra){ o[k]=extra[k]; } }
+    try{
+      var body=JSON.stringify(o);
+      if(beacon && navigator.sendBeacon){ navigator.sendBeacon(endpoint, new Blob([body],{type:'application/json'})); }
+      else{ fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:body,keepalive:true,mode:'cors',credentials:'omit'}).catch(function(){}); }
+    }catch(e){}
+  }
+
+  /* page_view: immer, ohne Consent */
+  send('page_view');
+
+  /* button_click (anonym) auf [data-track] */
+  document.addEventListener('click', function(e){
+    var el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+    if(!el) return;
+    send('button_click', {button: el.getAttribute('data-track')});
+  }, true);
+
+  /* page_exit (anonym, dwellMs) */
+  var exitSent=false;
+  function sendExit(){ if(exitSent) return; exitSent=true; send('page_exit', {dwellMs: Date.now()-LOAD}, true); }
+  document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden') sendExit(); });
+  window.addEventListener('pagehide', sendExit);
+})();
+</script>
+<!-- ===== /Anonyme Funnel-Views ===== -->
 <!-- ===== First-Party Funnel-Tracking (nur nach Consent) ===== -->
 <script>
 (function(){
