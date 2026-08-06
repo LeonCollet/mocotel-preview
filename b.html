@@ -66,6 +66,8 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(48,88,162,.18);border:1px solid rgba(48,88,162,.5);color:#cfe0fb;font-weight:600;font-size:.85rem;padding:8px 18px;border-radius:555px;margin-bottom:24px}
 .hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04}
 .hero p.sub{color:var(--muted);font-size:1.2rem;max-width:600px;margin:22px 0 30px}
+.hero-subhead{display:block;color:#fff;font-weight:700;font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.22;letter-spacing:-.01em;margin-bottom:10px}
+.hero-photo{width:100%;height:auto;border-radius:20px;border:1px solid rgba(127,176,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.4);display:block}
 .hero p.sub b{color:#fff;font-weight:600}
 .hero-cta{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
 .hero-meta{margin-top:26px;display:flex;flex-direction:column;gap:8px;justify-content:flex-start;color:var(--muted);font-size:.93rem}
@@ -254,6 +256,8 @@ br.mbr{display:none}
   .hero-left p.sub{margin-left:auto;margin-right:auto}
   .console-wrap{max-width:720px;margin:0 auto}
   .hero p.sub{font-size:1.08rem}
+  .hero-subhead{font-size:clamp(1.5rem,5.6vw,1.75rem)}
+  .hero-photo{aspect-ratio:16/9;object-fit:cover;object-position:center 22%}
   .reviews{gap:14px;flex-direction:row;flex-wrap:nowrap}
   .reviews img{height:56px}
   .console-wrap{margin-top:34px}
@@ -269,6 +273,9 @@ br.mbr{display:none}
   br.mbr{display:inline}
   br.dbr{display:none}
   .inside-grid .sect-h{text-align:center!important}
+  #team .team-grid{text-align:center}
+  #team .team-cred{justify-content:center}
+  .inside-card{text-align:center}
 }
 @media(max-width:420px){
   .reviews{flex-direction:row;gap:10px}
@@ -300,7 +307,7 @@ br.mbr{display:none}
     <div class="hero-left">
     <span class="badge">Einführungspreis: 0 € statt 97 €</span>
     <h1>Das zweite <span class="accent">Gehirn</span><br>für Dein KMU.</h1>
-    <p class="sub"><b>Was Dich mit dem KMU-Gehirn Starterset erwartet:</b><br>Deine Mitarbeiter fragen die KI, die mit dem Wissen Deiner Firma gefüttert ist. Sofort die richtige Antwort, mit Quelle. Kein Suchen mehr, keine Rückfragen bei Dir. Alles liegt zentral im Unternehmen, nicht mehr in einzelnen Köpfen.<br>In unter 2 Stunden eingerichtet.</p>
+    <p class="sub"><span class="hero-subhead">Was Dich mit dem KMU-Gehirn-Starterset erwartet:</span>Deine Mitarbeiter fragen die KI, die mit dem Wissen Deiner Firma gefüttert ist. Sofort die richtige Antwort, mit Quelle. Kein Suchen mehr, keine Rückfragen bei Dir. Alles liegt zentral im Unternehmen, nicht mehr in einzelnen Köpfen. In unter 2 Stunden eingerichtet.</p>
     <div class="hero-cta">
       <a href="https://buy.stripe.com/eVq14m8iC8NBeucbUW0co03" data-track="stripe_checkout" class="btn cta-stripe lg">Jetzt gratis sichern <span class="btn-arrow">→</span></a>
       <a href="#whats-inside" class="btn ghost lg">Was steckt drin?</a>
@@ -318,7 +325,7 @@ br.mbr{display:none}
     </div>
     <div class="hero-right">
     <div class="console-wrap">
-      <img src="assets/img/gruender-zwei.jpg" alt="Thomas und Clemens Glaeser, Gründer von mocotel services" loading="eager" style="width:100%;height:auto;border-radius:20px;border:1px solid rgba(127,176,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.4);display:block">
+      <img src="assets/img/gruender-zwei.jpg" alt="Thomas und Clemens Glaeser, Gründer von mocotel services" loading="eager" class="hero-photo">
     </div>
     </div>
   </div>
