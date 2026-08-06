@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<script>/* A/B-Split 50/50, sticky */(function(){try{var m=document.cookie.match(/(?:^|; )ab=([^;]+)/),v=m?m[1]:null;if(!v){v=Math.random()<0.5?"A":"B";document.cookie="ab="+v+";path=/;max-age=2592000;SameSite=Lax";}if(v==="B"){location.replace("/b"+location.search+location.hash);}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Das zweite Gehirn für Dein KMU · mocotel</title>
 <meta name="description" content="Das gesamte Wissen Deiner Firma an einem Ort. Jeder im Team bekommt in Sekunden die richtige Antwort, mit Quelle. Jetzt 0 € statt 97 €, nur bis 15. Juli. Kein Abo, lebenslang.">
@@ -301,7 +300,7 @@ br.mbr{display:none}
     <div class="hero-left">
     <span class="badge">Einführungspreis: 0 € statt 97 €</span>
     <h1>Das zweite <span class="accent">Gehirn</span><br>für Dein KMU.</h1>
-    <p class="sub"><b>Das KMU-Gehirn-Starterset:</b><br>ein fertiger Obsidian-Vault plus Claude-Skills, die Du einmal installierst. Danach bekommt jeder im Team jede Antwort in Sekunden, mit Quelle. In unter 2 Stunden startklar, kein Abo.</p>
+    <p class="sub"><b>Was Dich mit dem KMU-Gehirn Starterset erwartet:</b><br>Deine Mitarbeiter fragen die KI, die mit dem Wissen Deiner Firma gefüttert ist. Sofort die richtige Antwort, mit Quelle. Kein Suchen mehr, keine Rückfragen bei Dir. Alles liegt zentral im Unternehmen, nicht mehr in einzelnen Köpfen.<br>In unter 2 Stunden eingerichtet.</p>
     <div class="hero-cta">
       <a href="https://buy.stripe.com/eVq14m8iC8NBeucbUW0co03" data-track="stripe_checkout" class="btn cta-stripe lg">Jetzt gratis sichern <span class="btn-arrow">→</span></a>
       <a href="#whats-inside" class="btn ghost lg">Was steckt drin?</a>
@@ -319,15 +318,7 @@ br.mbr{display:none}
     </div>
     <div class="hero-right">
     <div class="console-wrap">
-      <div class="console has-beam">
-        <div class="border-beam"></div>
-        <div class="console__bar">
-          <div class="console__dots"><span class="console__dot"></span><span class="console__dot"></span><span class="console__dot"></span></div>
-          <div class="console__title"><span class="console__title-dot"></span>mocotel-gehirn</div>
-          <div class="console__live"></div>
-        </div>
-        <div class="console__body" id="js-console-body"></div>
-      </div>
+      <img src="assets/img/gruender-zwei.jpg" alt="Thomas und Clemens Glaeser, Gründer von mocotel services" loading="eager" style="width:100%;height:auto;border-radius:20px;border:1px solid rgba(127,176,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.4);display:block">
     </div>
     </div>
   </div>
@@ -670,7 +661,7 @@ br.mbr{display:none}
     }
     function apply(){
       var u=collectUTMs();
-      var crid="A~"+(u.utm_content||'');
+      var crid="B~"+(u.utm_content||'');
       var els=document.querySelectorAll('a.cta-stripe');
       for(var i=0;i<els.length;i++){ try{ var url=new URL(els[i].href); url.searchParams.set('client_reference_id', crid); els[i].href=url.toString(); }catch(e){} }
     }
@@ -695,7 +686,7 @@ br.mbr{display:none}
 
   function send(evt, extra, beacon){
     var endpoint=DASHBOARD_URL+"/api/funnel/track";
-    var o={event:evt, funnelKey:FUNNEL_KEY, anonymous:true, variant:"A", step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
+    var o={event:evt, funnelKey:FUNNEL_KEY, anonymous:true, variant:"B", step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
     if(extra){ for(var k in extra){ o[k]=extra[k]; } }
     try{
       var body=JSON.stringify(o);
@@ -761,7 +752,7 @@ br.mbr{display:none}
     var VISITOR=visitorId(), SESSION=sessionId(), DEVICE=device(), UTM=utm(), LOAD=Date.now();
 
     function payload(evt, extra){
-      var o={event:evt, funnelKey:FUNNEL_KEY, variant:"A", visitorId:VISITOR, sessionId:SESSION, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
+      var o={event:evt, funnelKey:FUNNEL_KEY, variant:"B", visitorId:VISITOR, sessionId:SESSION, step:STEP, stepIndex:STEP_INDEX, device:DEVICE, utm:UTM, referrer:document.referrer||'', url:location.href, ts:new Date().toISOString()};
       if(extra){ for(var k in extra){ o[k]=extra[k]; } }
       return o;
     }
