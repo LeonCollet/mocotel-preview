@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<script>/* A/B-Split 50/50, sticky */(function(){try{var m=document.cookie.match(/(?:^|; )ab=([^;]+)/),v=m?m[1]:null;if(!v){v=Math.random()<0.5?"A":"B";document.cookie="ab="+v+";path=/;max-age=2592000;SameSite=Lax";}if(v==="B"){location.replace("/b"+location.search+location.hash);}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Das zweite Gehirn für Dein KMU · mocotel</title>
 <meta name="description" content="Das gesamte Wissen Deiner Firma an einem Ort. Jeder im Team bekommt in Sekunden die richtige Antwort, mit Quelle. Jetzt 0 € statt 97 €, nur bis 15. Juli. Kein Abo, lebenslang.">
@@ -66,7 +65,9 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .hero-right{min-width:0}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(48,88,162,.18);border:1px solid rgba(48,88,162,.5);color:#cfe0fb;font-weight:600;font-size:.85rem;padding:8px 18px;border-radius:555px;margin-bottom:24px}
 .hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04}
-.hero p.sub{color:var(--muted);font-size:1.2rem;max-width:600px;margin:22px 0 30px}
+.hero p.sub{color:var(--muted);font-size:1.2rem;max-width:680px;margin:22px 0 30px}
+.hero-subhead{display:block;color:#fff;font-weight:700;font-size:clamp(1.25rem,1.9vw,1.5rem);line-height:1.22;letter-spacing:-.01em;margin-bottom:10px}
+.hero-photo{width:100%;max-width:600px;aspect-ratio:3/2;object-fit:cover;object-position:center 5%;height:auto;border-radius:20px;border:1px solid rgba(127,176,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.4);display:block;margin:0 auto}
 .hero p.sub b{color:#fff;font-weight:600}
 .hero-cta{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
 .hero-meta{margin-top:26px;display:flex;flex-direction:column;gap:8px;justify-content:flex-start;color:var(--muted);font-size:.93rem}
@@ -255,6 +256,8 @@ br.mbr{display:none}
   .hero-left p.sub{margin-left:auto;margin-right:auto}
   .console-wrap{max-width:720px;margin:0 auto}
   .hero p.sub{font-size:1.08rem}
+  .hero-subhead{font-size:clamp(1.5rem,5.6vw,1.75rem)}
+  .hero-photo{aspect-ratio:16/9;object-fit:cover;object-position:center 22%}
   .reviews{gap:14px;flex-direction:row;flex-wrap:nowrap}
   .reviews img{height:56px}
   .console-wrap{margin-top:34px}
@@ -303,8 +306,8 @@ br.mbr{display:none}
   <div class="inner hero-grid">
     <div class="hero-left">
     <span class="badge">Einführungspreis: 0 € statt 97 €</span>
-    <h1>Das zweite <span class="accent">Gehirn</span><br>für Dein KMU.</h1>
-    <p class="sub"><b>Das KMU-Gehirn-Starterset:</b><br>ein fertiger Obsidian-Vault plus Claude-Skills, die Du einmal installierst. Danach bekommt jeder im Team jede Antwort in Sekunden, mit Quelle. In unter 2 Stunden startklar, kein Abo.</p>
+    <h1>Der zentrale <span class="accent">Wissensspeicher</span><br>für Dein KMU.</h1>
+    <p class="sub"><span class="hero-subhead">Eine KI kennt Euer gesamtes Firmenwissen und beantwortet jede Frage in Sekunden.</span>Deine Mitarbeiter müssen nicht mehr suchen oder bei Dir nachfragen. Sie bekommen sofort die richtige Antwort, mit Quelle. Das Wissen bleibt in der Firma, nicht in einzelnen Köpfen. <br class="dbr">In unter 2 Stunden eingerichtet.</p>
     <div class="hero-cta">
       <a href="https://buy.stripe.com/eVq14m8iC8NBeucbUW0co03" data-track="stripe_checkout" class="btn cta-stripe lg">Jetzt gratis sichern <span class="btn-arrow">→</span></a>
       <a href="#whats-inside" class="btn ghost lg">Was steckt drin?</a>
@@ -322,15 +325,7 @@ br.mbr{display:none}
     </div>
     <div class="hero-right">
     <div class="console-wrap">
-      <div class="console has-beam">
-        <div class="border-beam"></div>
-        <div class="console__bar">
-          <div class="console__dots"><span class="console__dot"></span><span class="console__dot"></span><span class="console__dot"></span></div>
-          <div class="console__title"><span class="console__title-dot"></span>mocotel-gehirn</div>
-          <div class="console__live"></div>
-        </div>
-        <div class="console__body" id="js-console-body"></div>
-      </div>
+      <img src="assets/img/gruender-zwei.jpg" alt="Thomas und Clemens Glaeser, Gründer von mocotel services" loading="eager" class="hero-photo">
     </div>
     </div>
   </div>
