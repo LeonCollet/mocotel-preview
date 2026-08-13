@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- A/B-Split 50/50 · sticky pro Browser · UTMs werden an /b durchgereicht -->
+<script>
+(function(){
+  try{
+    var qs = location.search;
+    // QA-Override: ?ab=a erzwingt A, ?ab=b erzwingt B
+    var m = qs.match(/[?&]ab=(a|b)/i);
+    var force = m ? m[1].toUpperCase() : null;
+    var KEY = "mocotel_ab";
+    var v = force || localStorage.getItem(KEY);
+    if(!v){ v = Math.random() < 0.5 ? "A" : "B"; }
+    localStorage.setItem(KEY, v);
+    if(v === "B"){ location.replace("/b" + location.search + location.hash); }
+  }catch(e){}
+})();
+</script>
 <title>Der zentrale Wissensspeicher für Dein KMU · mocotel</title>
 <meta name="description" content="Das gesamte Wissen Deiner Firma an einem Ort. Jeder im Team bekommt in Sekunden die richtige Antwort, mit Quelle. Jetzt 0 € statt 97 €, nur bis 15. Juli. Kein Abo, lebenslang.">
 <meta name="theme-color" content="#0E2240">
