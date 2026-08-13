@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Das zweite Gehirn für Dein KMU · mocotel</title>
+<title>Der zentrale Wissensspeicher für Dein KMU · mocotel</title>
 <meta name="description" content="Das gesamte Wissen Deiner Firma an einem Ort. Jeder im Team bekommt in Sekunden die richtige Antwort, mit Quelle. Jetzt 0 € statt 97 €, nur bis 15. Juli. Kein Abo, lebenslang.">
 <meta name="theme-color" content="#0E2240">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -167,6 +167,10 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .cmp .m{font-weight:700;flex-shrink:0}
 .cmp.bad .m{color:var(--gray-light)}
 .cmp.good .m{color:var(--blue-soft)}
+.cmp.good{position:relative;overflow:hidden;transform:scale(1.04);padding:40px;box-shadow:0 26px 64px rgba(48,88,162,.5);border-color:rgba(127,176,255,.55)}
+.cmp.good .amount{font-size:1.95rem;color:#fff}
+.cmp.bad{opacity:.7;filter:saturate(.75)}
+.cmp.bad .amount{font-size:1.3rem;white-space:nowrap}
 .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .ben{position:relative;background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:18px;padding:30px;overflow:hidden;transition:transform .15s,border-color .15s}
 .ben:hover{transform:translateY(-4px);border-color:rgba(127,176,255,.3)}
@@ -264,6 +268,7 @@ br.mbr{display:none}
   .console__body{font-size:.74rem;min-height:440px}
   .price-card,.inside-card{padding:26px}
   .cmp,.pain,.feat,.uc,.ben,.step{padding:24px}
+  .cmp.good{transform:none;padding:26px}
   .btn.lg{font-size:.92rem;padding:16px 26px}
   .hero-cta{gap:12px}
   .hero-cta .btn{width:100%;justify-content:center}
@@ -307,7 +312,7 @@ br.mbr{display:none}
     <div class="hero-left">
     <span class="badge">Einführungspreis: 0 € statt 97 €</span>
     <h1>Der zentrale <span class="accent">Wissensspeicher</span><br>für Dein KMU.</h1>
-    <p class="sub"><span class="hero-subhead">Eine KI kennt Euer gesamtes Firmenwissen und beantwortet jede Frage in Sekunden.</span>Deine Mitarbeiter müssen nicht mehr suchen oder bei Dir nachfragen. Sie bekommen sofort die richtige Antwort, mit Quelle. Das Wissen bleibt in der Firma, nicht in einzelnen Köpfen. <br class="dbr">In unter 2 Stunden eingerichtet.</p>
+    <p class="sub"><span class="hero-subhead">Eine KI kennt Euer gesamtes Firmenwissen und <br class="dbr">beantwortet jede Frage in Sekunden.</span>Deine Mitarbeiter müssen nicht mehr suchen oder bei Dir nachfragen. <br class="dbr">Sie bekommen sofort die richtige Antwort, mit Quelle. Das Wissen bleibt <br class="dbr">in der Firma, nicht in einzelnen Köpfen. In unter 2 Stunden eingerichtet.</p>
     <div class="hero-cta">
       <a href="https://buy.stripe.com/eVq14m8iC8NBeucbUW0co03" data-track="stripe_checkout" class="btn cta-stripe lg">Jetzt gratis sichern <span class="btn-arrow">→</span></a>
       <a href="#whats-inside" class="btn ghost lg">Was steckt drin?</a>
@@ -364,7 +369,7 @@ br.mbr{display:none}
   <div class="quote-wrap">
     <img class="quote-portrait" src="assets/img/clemens-portrait.jpg" alt="Thomas Glaeser, mocotel" loading="lazy" onerror="this.style.display='none'">
     <div class="quote-body">
-      <blockquote>„Wir haben selbst erlebt, wie viel verloren geht, wenn das Wissen nur in Köpfen steckt. Genau dafür haben wir das KMU-Gehirn gebaut."</blockquote>
+      <blockquote>„Wir haben selbst erlebt, wie viel verloren geht, wenn das Wissen nur in Köpfen steckt. Genau dafür haben wir den Wissensspeicher gebaut."</blockquote>
       <div class="who"><b>Thomas Glaeser</b> · mocotel services</div>
     </div>
   </div>
@@ -382,7 +387,7 @@ br.mbr{display:none}
 <section class="sect bg-radial-soft has-fade-both" id="features">
   <div class="max-c">
     <div class="sect-h">
-      <span class="kicker">Was Dein KMU-Gehirn kann</span>
+      <span class="kicker">Was Dein Wissensspeicher kann</span>
       <h2>Ein Wissens-Backend,<br>das <span class="accent">mitwächst</span></h2>
       <p>Produktionsreife Infrastruktur aus echtem Tagesgeschäft. <br class="dbr">Keine Theorie, <br class="mbr">sondern ein funktionierendes System.</p>
     </div>
@@ -401,7 +406,7 @@ br.mbr{display:none}
 <section class="sect">
   <div class="max-c">
     <div class="sect-h">
-      <span class="kicker">Was Dein KMU-Gehirn beantwortet</span>
+      <span class="kicker">Was Dein Wissensspeicher beantwortet</span>
       <h2>Jede Abteilung.<br><span class="accent">Sofort</span> die richtige Antwort.</h2>
       <p>Statt zu fragen, zu suchen oder zu warten, stellt jeder seine Frage direkt ans Firmengehirn.<br>Hier ein paar Beispiele aus dem Alltag.</p>
     </div>
@@ -421,28 +426,34 @@ br.mbr{display:none}
   <div class="max-c">
     <div class="sect-h">
       <span class="kicker">Der Unterschied</span>
-      <h2>Nicht noch ein<br><span class="accent">KI-Tool</span></h2>
+      <h2>Nicht noch ein <span class="accent">KI-Tool</span></h2>
       <p>Eine KI ohne Dein Firmenwissen ist wie ein brillanter neuer Mitarbeiter, der nichts über Deine Firma weiß. <br class="mbr">Er kann reden, aber liefert nichts, was wirklich passt.</p>
     </div>
     <div class="cmp-grid">
       <div class="cmp bad">
-        <div class="tag">Verstreutes Wissen + generische KI</div>
-        <div class="amount">kostet Dich täglich</div>
+        <div class="tag">Ohne mocotel</div>
+        <div class="amount">Jeden Tag Zeit und Geld verloren</div>
         <ul>
-          <li><span class="m">✕</span> Jeder im Team nutzt KI anders, keiner richtig</li>
-          <li><span class="m">✕</span> Wissen liegt verstreut in Chats, <br class="mbr">Mails und Köpfen</li>
-          <li><span class="m">✕</span> Mittelmäßige Antworten ohne Kontext</li>
-          <li><span class="m">✕</span> Geht ein Mitarbeiter, geht das Wissen mit</li>
+          <li><span class="m">✕</span> Dein Team verschwendet jeden Tag Stunden mit Suchen, wichtige Aufgaben bleiben liegen und Deadlines wackeln.</li>
+          <li><span class="m">✕</span> Alle Fragen landen bei Dir, Deine eigene Arbeit bleibt liegen.</li>
+          <li><span class="m">✕</span> Generische KI-Antworten ohne Euren Kontext <br class="dbr">sind oft unbrauchbar oder sogar falsch.</li>
+          <li><span class="m">✕</span> Kündigt jemand, geht sein Wissen mit, <br class="dbr">die Übergabe wird zum Blindflug.</li>
+          <li><span class="m">✕</span> Neue Mitarbeiter brauchen Monate, <br class="dbr">bis sie mitkommen, und binden <br class="dbr">Deine besten Leute mit Fragen.</li>
+          <li><span class="m">✕</span> Ist der Wissensträger im Urlaub oder krank, <br class="dbr">bleiben Kundenanfragen liegen.</li>
+          <li><span class="m">✕</span> Beim Verkauf oder der Übergabe steckt der Wert <br class="dbr">in Köpfen, nicht in der Firma.</li>
         </ul>
       </div>
-      <div class="cmp good">
-        <div class="tag">mocotel Starterpaket</div>
-        <div class="amount">Jetzt 0 € statt 97 €</div>
+      <div class="cmp good has-beam"><div class="border-beam"></div>
+        <div class="tag">Mit mocotel</div>
+        <div class="amount">Jetzt für 0 € statt 97 €</div>
         <ul>
-          <li><span class="m">✓</span> Ein System statt Insellösungen</li>
-          <li><span class="m">✓</span> Das gesamte Firmenwissen zentral <br class="mbr">an einem Ort</li>
-          <li><span class="m">✓</span> Antworten mit echtem Firmenkontext <br class="mbr">und Quelle</li>
-          <li><span class="m">✓</span> Das Wissen bleibt, egal wer kommt oder geht</li>
+          <li><span class="m">✓</span> Jede Antwort in Sekunden, Dein Team arbeitet wieder statt zu suchen.</li>
+          <li><span class="m">✓</span> Keiner muss mehr zu Dir, Du hast endlich <br class="dbr">den Kopf frei.</li>
+          <li><span class="m">✓</span> Antworten auf Basis Eures echten Firmenwissens, immer mit Quelle.</li>
+          <li><span class="m">✓</span> Das Wissen bleibt im Unternehmen, <br class="dbr">egal wer kommt oder geht.</li>
+          <li><span class="m">✓</span> Neue sind in Tagen produktiv, sie fragen das System statt ständig die Kollegen.</li>
+          <li><span class="m">✓</span> Egal wer fehlt, das Team liefert weiter, <br class="dbr">ohne Qualitätsverlust.</li>
+          <li><span class="m">✓</span> Dein Unternehmen wird übergabefähig und <br class="dbr">mehr wert, das Wissen bleibt verankert.</li>
         </ul>
       </div>
     </div>
@@ -486,7 +497,7 @@ br.mbr{display:none}
     <div>
       <div class="sect-h" style="text-align:left;margin:0 0 2rem">
         <span class="kicker">Was steckt drin</span>
-        <h2>Dein KMU-Gehirn-Starterset</h2>
+        <h2>Dein KMU-Wissensspeicher-Starterset</h2>
         <p>Alles, um in unter 2 Stunden startklar zu sein.<br>Einmal eingerichtet, dauerhaft nutzbar.</p>
       </div>
       <ul>
@@ -515,7 +526,7 @@ br.mbr{display:none}
     <div class="steps-grid">
       <div class="step"><div class="step-n">01</div><h3>Kaufen</h3><p>Aktuell 0 € statt 97 € (nur bis 15. Juli). Kein Abo, kein Kleingedrucktes. Sofort kompletter Zugang <br class="mbr">zum Starterset.</p></div>
       <div class="step"><div class="step-n">02</div><h3>Einrichten</h3><p>Vault, Skills-Package und KI-Anbindung mit dem Schritt-für-Schritt-Guide installieren. In unter 2 Stunden, <br class="dbr">ohne Programmierkenntnisse.</p></div>
-      <div class="step"><div class="step-n">03</div><h3>Nutzen</h3><p>Jeder im Team fragt, das KMU-Gehirn antwortet in Sekunden, mit Quelle. Dauerhaft, lebenslang.</p></div>
+      <div class="step"><div class="step-n">03</div><h3>Nutzen</h3><p>Jeder im Team fragt, der Wissensspeicher antwortet in Sekunden, mit Quelle. Dauerhaft, lebenslang.</p></div>
     </div>
     <div class="center-cta"><a href="https://buy.stripe.com/eVq14m8iC8NBeucbUW0co03" data-track="stripe_checkout" class="btn cta-stripe">Jetzt gratis sichern <span class="btn-arrow">→</span></a></div>
   </div>
@@ -526,7 +537,7 @@ br.mbr{display:none}
     <div class="sect-h">
       <span class="kicker">Preise</span>
       <h2>Einmal zahlen,<br><span class="accent">lebenslang nutzen.</span></h2>
-      <p>Kein Abo. Keine Folgekosten. <br class="mbr">Einmal das KMU-Gehirn aufsetzen, <br class="dbr">und das Wissen bleibt für immer in Deiner Firma.</p>
+      <p>Kein Abo. Keine Folgekosten. <br class="mbr">Einmal den Wissensspeicher aufsetzen, <br class="dbr">und das Wissen bleibt für immer in Deiner Firma.</p>
     </div>
     <div class="countdown-banner">
       <div class="countdown-banner__title">Jetzt kostenlos sichern, bevor es nur noch <br class="dbr">zum regulären Preis erhältlich ist.</div>
@@ -542,16 +553,16 @@ br.mbr{display:none}
     </div>
     <div class="price-card has-beam">
       <div class="border-beam"></div>
-      <h3>KMU-Gehirn · Starterset</h3>
-      <p class="desc">Das komplette zweite Gehirn für Dein Unternehmen: Vault, Skills-Package, KI-Anbindung und Setup-Guide.<br>Lebenslang, ohne Abo.</p>
+      <h3>KMU-Wissensspeicher · Starterset</h3>
+      <p class="desc">Das komplette Wissenssystem für Dein Unternehmen: <br class="dbr">zentraler Wissensspeicher, fertige Automatisierungen, <br class="dbr">KI-Anbindung und Anleitung. Lebenslang, ohne Abo.</p>
       <div class="price-row">
         <span class="price">0 €</span><span class="price-old">97 €</span><span class="price-tag">Einführungspreis</span>
       </div>
       <ul class="feature-list">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Fertiger Obsidian-Vault</b>, sofort einsatzbereit</span></li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Skills-Package</b>, das Aufgaben automatisch erledigt</span></li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>KI-Antworten mit Quelle</b>, in Sekunden statt Suchen</span></li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Setup-Guide</b>, in unter 2 Stunden startklar</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Zentraler Wissensspeicher</b>, sofort einsatzbereit in Deinem Unternehmen</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Fertige Automatisierungen</b>, die wiederkehrende Aufgaben übernehmen</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Antworten in Sekunden</b>, mit Quelle statt langem Suchen</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span><b>Schritt-für-Schritt-Anleitung</b>, in unter 2 Stunden startklar</span></li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>Einmalig, kein Abo, lebenslang nutzbar</span></li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L20 6"/></svg><span>Kostenlose Updates inklusive</span></li>
       </ul>
@@ -573,7 +584,7 @@ br.mbr{display:none}
   <div class="max-c">
     <div class="sect-h"><span class="kicker">FAQ</span><h2>Häufige Fragen</h2></div>
     <div class="faq-list">
-      <details open><summary>Was bekomme ich nach dem Kauf?</summary><p>Sofort Zugang zum kompletten KMU-Gehirn-Starterset: fertiger Obsidian-Vault, Skills-Package, KI-Anbindung und Setup-Guide. In unter 2 Stunden startklar.</p></details>
+      <details open><summary>Was bekomme ich nach dem Kauf?</summary><p>Sofort Zugang zum kompletten KMU-Wissensspeicher-Starterset: zentraler Wissensspeicher, fertige Automatisierungen, KI-Anbindung und Anleitung. In unter 2 Stunden startklar.</p></details>
       <details><summary>Brauche ich Programmierkenntnisse?</summary><p>Nein. Der Setup-Guide führt Dich Schritt für Schritt durch die Einrichtung. Danach arbeitest Du mit natürlicher Sprache, wie in einem Gespräch.</p></details>
       <details><summary>Was passiert mit meinen Firmendaten?</summary><p>Dein Wissen bleibt bei Dir. mocotel kommt aus der IT mit über 10 Jahren Praxis, Microsoft- und Sophos-Partner, DSGVO-konform. Datensicherheit ist von Anfang an mitgedacht.</p></details>
       <details><summary>Ist das ein Abo?</summary><p>Nein. Aktuell 0 € im Einführungszeitraum (nur bis 15. Juli), danach einmalig 97 €. Du behältst das Starterset dauerhaft. Keine monatlichen Gebühren, kostenlose Updates inklusive.</p></details>
@@ -652,7 +663,7 @@ br.mbr{display:none}
   window._fbPixelReady = [];
   document.addEventListener('DOMContentLoaded', function(){
     var els = document.querySelectorAll('.cta-stripe');
-    for(var i=0;i<els.length;i++){ els[i].addEventListener('click', function(){ if(window.fbTrack) fbTrack('InitiateCheckout', {content_name:'KMU-Gehirn Starterset', value:0.00, currency:'EUR'}); }); }
+    for(var i=0;i<els.length;i++){ els[i].addEventListener('click', function(){ if(window.fbTrack) fbTrack('InitiateCheckout', {content_name:'KMU-Wissensspeicher Starterset', value:0.00, currency:'EUR'}); }); }
   });
 </script>
 
