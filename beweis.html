@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Der 15-Minuten-Beweis · mocotel</title>
+<meta content="Drei Prompts, eine Beispiel-Vorlage, 15 Minuten. Erlebe selbst, wie anders eine KI antwortet, sobald sie Firmenkontext hat." name="description"/>
+<meta content="noindex,follow" name="robots"/>
+<meta content="#0E2240" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0E2240;--navy-2:#0A1730;--panel:rgba(255,255,255,.045);--panel-2:rgba(9,19,37,.55);
+  --fg:#fff;--muted:rgba(255,255,255,.72);--gray-light:#ACADB0;
+  --blue:#3058A2;--blue-deep:#1D3766;--blue-soft:#7FB0FF;--line:rgba(255,255,255,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:#0A1730}
+body{font-family:"IBM Plex Sans",sans-serif;background:linear-gradient(180deg,#0E2240 0,#0A1730 900px,#0A1730 100%);color:var(--fg);line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px}
+header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.site-nav{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:780px;margin:0 auto;padding:0 24px}
+.logo-img{height:30px;width:auto}
+.kicker{display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-soft);margin-bottom:14px}
+.hero{padding:58px 0 10px;background:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(48,88,162,.28), transparent 62%)}
+.hero h1{font-size:clamp(2rem,5.4vw,3rem);font-weight:700;letter-spacing:-.028em;line-height:1.08}
+.hero h1 em{font-style:italic;color:var(--gray-light)}
+.hero p{color:var(--muted);font-size:1.1rem;margin-top:20px}
+.vor{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:34px 0 8px}
+.vor span.k{display:block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-soft);margin-bottom:12px}
+.vor ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.vor li{display:flex;gap:10px;color:var(--muted);font-size:.97rem}
+.vor li::before{content:"\2713";color:var(--blue-soft);font-weight:700;flex-shrink:0}
+.step-card{background:var(--panel-2);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:20px;padding:32px;margin-top:26px}
+.step-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:14px}
+.step-n{flex-shrink:0;width:46px;height:46px;border-radius:13px;background:rgba(48,88,162,.24);border:1px solid rgba(127,176,255,.3);color:var(--blue-soft);display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:1.05rem}
+.step-head h2{font-size:1.4rem;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.dauer{font-size:.82rem;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.wie{color:var(--muted);font-size:1rem;margin-bottom:20px}
+.wie b{color:#fff}
+.promptbox{border:1px solid rgba(127,176,255,.2);border-radius:14px;overflow:hidden;background:rgba(9,19,37,.75)}
+.promptbox__bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 14px;background:rgba(0,0,0,.28);border-bottom:1px solid var(--line)}
+.promptbox__lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.copy{cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:600;letter-spacing:.03em;color:#fff;background:linear-gradient(90deg,var(--blue-deep),var(--blue));border:1px solid rgba(127,176,255,.3);border-radius:9px;padding:8px 15px;transition:filter .15s,transform .12s;white-space:nowrap}
+.copy:hover{filter:brightness(1.14);transform:translateY(-1px)}
+.copy.ok{background:rgba(48,88,162,.2);border-color:rgba(127,176,255,.5)}
+pre{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.83rem;line-height:1.62;color:rgba(255,255,255,.86);padding:20px;white-space:pre-wrap;word-break:break-word;max-height:340px;overflow:auto}
+.erw{margin-top:22px;border-left:2px solid rgba(127,176,255,.4);padding-left:20px}
+.erw__k{display:block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-soft);margin-bottom:11px}
+.erw ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.erw li{color:var(--muted);font-size:.96rem;padding-left:16px;position:relative}
+.erw li::before{content:"\2013";position:absolute;left:0;color:var(--blue-soft)}
+.fazit{margin-top:16px;font-size:1rem;font-weight:600;color:#fff}
+.schluss{margin-top:44px;background:linear-gradient(160deg,rgba(48,88,162,.26),rgba(9,19,37,.6));border:1px solid rgba(127,176,255,.32);border-radius:22px;padding:38px 34px;text-align:center}
+.schluss h2{font-size:clamp(1.5rem,3.6vw,2.05rem);font-weight:700;letter-spacing:-.022em;margin-bottom:18px}
+.schluss p{color:var(--muted);font-size:1.03rem;margin-bottom:14px}
+.schluss p b{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--blue-deep),var(--blue));color:#fff;font-weight:600;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;padding:16px 32px;border-radius:12px;border:1px solid rgba(127,176,255,.25);text-decoration:none;box-shadow:0 10px 30px rgba(48,88,162,.4);transition:filter .15s,transform .15s;margin-top:12px}
+.btn:hover{filter:brightness(1.13);transform:translateY(-2px)}
+.btn.ghost{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.18);box-shadow:none;text-transform:none;letter-spacing:0;font-weight:500;padding:13px 24px;font-size:.92rem}
+.extras{margin-top:44px;padding-top:32px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:26px}
+.extra{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.extra h3{font-size:1.08rem;font-weight:700;margin-bottom:8px}
+.extra p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+footer{margin-top:52px;background:rgba(7,15,30,.6);border-top:1px solid var(--line);color:var(--muted);padding:34px 0;font-size:.88rem}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px}
+.foot-links a{text-decoration:none}
+.foot-links a:hover{color:#fff}
+@media(max-width:700px){
+  .step-card{padding:24px 20px;border-radius:16px}
+  .step-head{gap:14px}
+  .step-n{width:40px;height:40px}
+  .promptbox__bar{flex-direction:column;align-items:flex-start;gap:10px}
+  .copy{width:100%;text-align:center}
+  pre{font-size:.78rem;padding:16px;max-height:280px}
+  .schluss{padding:28px 22px}
+  .btn{width:100%;justify-content:center}
+}
+
+/* ===== Typografie: keine Einzelwort-Zeilen =====================
+   balance verteilt Ueberschriften gleichmaessig auf ihre Zeilen,
+   pretty verhindert im Fliesstext eine letzte Zeile mit nur einem Wort.
+   Faellt in aelteren Browsern sauber auf normales Umbrechen zurueck. */
+h1,h2,h3,h4,h5,blockquote,summary,
+.punch,.hero-subhead,.res-h,.fazit,.amount,.closer strong,.noabo,
+.quiz__q,.quiz__intro-h,.dk-card h3,.step h3,.feat h3,.ben h3,.pain h3,
+.inside-card h3,.price-card h3,.extra h3,.schluss h2,.final h2,.sect-h h2{
+  text-wrap:balance;
+}
+p,li,span,label,figcaption,
+.sub,.desc,.wie,.quiz__hint,.ip-note,.inside-trust,.placeholder-note,
+.dauer,.lab,.who,.dk-next li,.erw li,.vor li,.quiz__intro-p,.res-p{
+  text-wrap:pretty;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+<nav class="site-nav">
+<img alt="mocotel IT-Service &amp; Security" class="logo-img" src="assets/mocotel-logo.png"/>
+<span style="font-size:.8rem;color:var(--muted);font-family:'IBM Plex Mono',monospace">15-MIN-BEWEIS</span>
+</nav>
+</header>
+<main class="wrap">
+<div class="hero">
+<span class="kicker">Der 15-Minuten-Beweis</span>
+<h1>Nicht die KI ist das Problem.<br/><em>Sie kennt Deine Firma nicht.</em></h1>
+<p>Drei Prompts, eine Beispiel-Vorlage, 15 Minuten. Danach hast Du den Unterschied nicht gelesen, sondern selbst gesehen. Kein Download, kein Tool, keine Firmendaten nötig.</p>
+</div>
+<div class="vor">
+<span class="k">Was Du brauchst</span>
+<ul><li>ChatGPT oder Claude im Browser. Der kostenlose Zugang reicht.</li><li>15 Minuten ungestört. Am Rechner, nicht am Handy.</li><li>Keine Installation, kein Download, keine Firmendaten. Der Steckbrief ist erfunden.</li></ul>
+</div>
+<section class="step-card">
+<div class="step-head">
+<span class="step-n">01</span>
+<div>
+<h2>Frag die KI ohne jeden Firmenkontext</h2>
+<span class="dauer">3 Minuten</span>
+</div>
+</div>
+<p class="wie">Neuer Chat in ChatGPT oder Claude. Prompt einfügen, abschicken. Nichts weiter erklären.</p>
+<div class="promptbox">
+<div class="promptbox__bar">
+<span class="promptbox__lbl">Prompt</span>
+<button class="copy" data-copy="p01" type="button">Prompt 1 kopieren</button>
+</div>
+<pre id="p01">Du arbeitest im Vertrieb eines Planungsbüros für technische Gebäudeausrüstung. Schreibe eine Antwort auf diese Kundenanfrage:
+
+"Guten Tag, wir planen für Q1 ein weiteres Projekt, Sanierung der Heizungsanlage, rund 40 Wohneinheiten. Können Sie uns bis Ende der Woche ein Angebot machen? Und gilt unser Nachlass auch hier? Viele Grüße, M. Terhoeven, Wohnbau Rheinland eG"</pre>
+</div>
+<div class="erw">
+<span class="erw__k">Was Du sehen wirst</span>
+<ul><li>Eine höfliche, gut formulierte Mail. Sie liest sich professionell.</li><li>Erfundene oder gar keine Preise. Die KI kennt Eure Sätze nicht.</li><li>Auf die Nachlass-Frage kommt Geschwafel oder eine Rückfrage.</li><li>Wahrscheinlich die Zusage, sich telefonisch zu melden.</li><li>Und ziemlich sicher ein „Ende der Woche geht klar“.</li></ul>
+<p class="fazit">Wenn Du diese Mail so rausschickst, hast Du einem Kunden gerade Konditionen und einen Termin zugesagt, die niemand geprüft hat.</p>
+</div>
+</section>
+<section class="step-card">
+<div class="step-head">
+<span class="step-n">02</span>
+<div>
+<h2>Dieselbe Anfrage, diesmal mit Firmenwissen</h2>
+<span class="dauer">7 Minuten</span>
+</div>
+</div>
+<p class="wie">Im <b>gleichen Chat</b> weitermachen. Prompt 2 einfügen, abschicken. Er enthält eine Seite Firmen-Steckbrief und dieselbe Kundenanfrage.</p>
+<div class="promptbox">
+<div class="promptbox__bar">
+<span class="promptbox__lbl">Prompt</span>
+<button class="copy" data-copy="p02" type="button">Steckbrief + Prompt 2 kopieren</button>
+</div>
+<pre id="p02">FIRMEN-STECKBRIEF (Beispiel)
+
+Firma: Steinbach Planung GmbH, Krefeld. Planungsbüro für technische
+Gebäudeausrüstung, 24 Mitarbeiter, gegründet 2009.
+
+LEISTUNGEN
+- TGA-Fachplanung Heizung, Lüftung, Sanitär und Elektro
+- Leistungsphasen 1 bis 9 nach HOAI
+- Energiekonzepte und Fördermittelberatung
+- Bauüberwachung
+
+STUNDENSÄTZE (netto)
+- Projektleitung: 118 EUR
+- Fachplanung: 94 EUR
+- Technische Zeichnung: 76 EUR
+- Machbarkeitsstudie als Pauschale: ab 4.800 EUR
+- Angebote sind 30 Tage bindend.
+
+KERNPROZESSE
+1. Angebotsfreigabe: Angebote bis 25.000 EUR gibt die Projektleitung frei.
+   Alles darüber nur durch die Geschäftsführung. Vorlaufzeit für ein
+   belastbares Angebot: 8 Arbeitstage, gerechnet ab vollständigen Unterlagen.
+2. Projektstart: Innerhalb von 5 Arbeitstagen nach Auftrag gibt es ein
+   Kick-off mit Protokoll. Ohne Protokoll starten wir nicht in die Planung.
+3. Nachträge: Nur schriftlich und nur vor der Ausführung. Freigabe durch
+   die Projektleitung. Mündliche Zusagen gelten bei uns nicht.
+
+KUNDEN-EIGENHEITEN
+- Wohnbau Rheinland eG: Rahmenvertrag seit 2021. Nachlass von 8 Prozent,
+  aber erst ab dem dritten Projekt im laufenden Kalenderjahr. 2026 läuft
+  aktuell das zweite Projekt. Ansprechpartnerin ist Frau Terhoeven. Sie
+  möchte freitags grundsätzlich nicht telefonieren, nur per Mail.
+- Klinikum Süd: Alle Unterlagen digital UND in Papier. Nachträge laufen
+  ausschließlich über das Bauamt, nie direkt. Zahlungsziel 60 Tage.
+
+---
+
+Das ist der Steckbrief meiner Firma. Schreibe auf dieser Grundlage eine Antwort auf diese Kundenanfrage:
+
+"Guten Tag, wir planen für Q1 ein weiteres Projekt, Sanierung der Heizungsanlage, rund 40 Wohneinheiten. Können Sie uns bis Ende der Woche ein Angebot machen? Und gilt unser Nachlass auch hier? Viele Grüße, M. Terhoeven, Wohnbau Rheinland eG"</pre>
+</div>
+<div class="erw">
+<span class="erw__k">Was Du sehen wirst</span>
+<ul><li>Der Nachlass wird korrekt verneint: 8 Prozent erst ab dem dritten Projekt, aktuell läuft das zweite.</li><li>Die Vorlaufzeit wird richtig gesetzt: 8 Arbeitstage, nicht „Ende der Woche“.</li><li>Der Hinweis auf die Freigabe durch die Geschäftsführung, weil das Projekt über 25.000 Euro liegt.</li><li>Kein Telefon-Angebot, weil Frau Terhoeven freitags nicht telefoniert.</li><li>Echte Stundensätze statt erfundener Zahlen.</li></ul>
+<p class="fazit">Gleiches Modell. Gleiche Frage. Eine Seite Kontext Unterschied. Diese Mail könnte so raus.</p>
+</div>
+</section>
+<section class="step-card">
+<div class="step-head">
+<span class="step-n">03</span>
+<div>
+<h2>Lass die KI selbst sagen, was ihr gefehlt hat</h2>
+<span class="dauer">2 Minuten</span>
+</div>
+</div>
+<p class="wie">Immer noch derselbe Chat. Prompt 3 einfügen, abschicken.</p>
+<div class="promptbox">
+<div class="promptbox__bar">
+<span class="promptbox__lbl">Prompt</span>
+<button class="copy" data-copy="p03" type="button">Prompt 3 kopieren</button>
+</div>
+<pre id="p03">Letzte Frage, ehrlich beantwortet: Welche drei Informationen haben Dir bei meiner ersten Anfrage gefehlt, um sie richtig zu beantworten?</pre>
+</div>
+<div class="erw">
+<span class="erw__k">Was Du sehen wirst</span>
+<ul><li>Die KI benennt selbst, was sie beim ersten Versuch nicht wusste: Preise, Konditionen, interne Freigaberegeln.</li><li>Also genau die Dinge, die bei Euch heute in Köpfen stehen und nicht in einem System.</li></ul>
+<p class="fazit">Das ist der ganze Punkt. Nicht die KI war das Problem. Ihr fehlender Zugang zu Eurem Wissen war es.</p>
+</div>
+</section>
+<section class="schluss">
+<h2>Was Du gerade erlebt hast</h2>
+<p>Du hast mit <b>einer einzigen Seite Kontext</b> gesehen, was in einem Prompt-Fenster passiert.</p><p>Jetzt stell Dir dasselbe mit dem gesamten Wissen Deiner Firma vor. Dauerhaft. Für Dein ganzes Team. Mit Quellenangabe zu jeder Antwort.</p><p>Genau das ist das Firmen-Gedächtnis. Und genau das richten wir im Starterset gemeinsam ein.</p>
+<a class="btn" href="starterset.html">Zum Starterset (97 €) <span>→</span></a>
+</section>
+<div class="extras">
+<div class="extra">
+<h3>Willst Du es genau wissen?</h3>
+<p>Der 12-Fragen-Test ist die Version für Dein Team. Zwölf Fragen, eine Regel: Dich fragen gilt nicht. Zum Ausdrucken und Abhaken.</p>
+<a class="btn ghost" download="" href="Der-12-Fragen-Test.pdf">12-Fragen-Test als PDF ↓</a>
+</div>
+<div class="extra">
+<h3>Lieber auf Papier?</h3>
+<p>Diese Seite gibt es auch als PDF, zum Ausdrucken oder Weiterleiten an Deine Kollegen.</p>
+<a class="btn ghost" download="" href="Der-15-Minuten-Beweis.pdf">15-Minuten-Beweis als PDF ↓</a>
+</div>
+<div class="extra">
+<h3>Diesen Link weitergeleitet bekommen?</h3>
+<p>Dann kennst Du Deinen eigenen Wert noch nicht. Der Engpass-Check zeigt Dir in 60 Sekunden, wie abhängig Deine Firma von einzelnen Köpfen ist.</p>
+<a class="btn ghost" href="index.html">Zum Engpass-Check →</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="wrap">
+<img alt="mocotel" src="assets/mocotel-logo.png" style="height:26px"/>
+<div class="foot-links">
+<a href="mailto:info@mocotel.de">Kontakt</a>
+<a href="https://mocotel.de/impressum" rel="noopener" target="_blank">Impressum</a>
+<a href="https://mocotel.de/datenschutz" rel="noopener" target="_blank">Datenschutz</a>
+</div>
+<p style="margin-top:16px;font-size:.82rem">© 2026 mocotel services. Die Steinbach Planung GmbH ist ein erfundenes Beispiel.</p>
+</div>
+</footer>
+<script>
+(function(){
+  var btns = document.querySelectorAll(".copy");
+  for(var i=0;i<btns.length;i++){
+    (function(b){
+      var orig = b.textContent;
+      b.addEventListener("click", function(){
+        var el = document.getElementById(b.getAttribute("data-copy"));
+        if(!el) return;
+        var text = el.textContent;
+        function done(){
+          b.textContent = "Kopiert \u2713";
+          b.classList.add("ok");
+          setTimeout(function(){ b.textContent = orig; b.classList.remove("ok"); }, 2200);
+        }
+        function fallback(){
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly","");
+          ta.style.position = "fixed"; ta.style.top = "-1000px";
+          document.body.appendChild(ta);
+          ta.select(); ta.setSelectionRange(0, text.length);
+          try{ document.execCommand("copy"); done(); }
+          catch(e){ b.textContent = "Bitte manuell markieren"; setTimeout(function(){ b.textContent = orig; }, 2600); }
+          document.body.removeChild(ta);
+        }
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(done).catch(fallback);
+        } else { fallback(); }
+      });
+    })(btns[i]);
+  }
+})();
+</script>
+</body>
+</html>

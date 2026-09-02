@@ -1,0 +1,37 @@
+DEPLOY-ORDNER brain.mocotel.de
+Stand 2026-08-25
+
+Der Inhalt dieses Ordners gehoert 1:1 ins Wurzelverzeichnis des Projekts,
+an dem brain.mocotel.de haengt. Nicht in einen Unterordner.
+
+  index.html               Engpass-Check, Startseite, Ziel aller Ads
+  danke-check.html         nach dem Opt-in
+  beweis.html              15-Minuten-Beweis, verlinkt aus A1, A2, A3
+  starterset.html          Verkaufsseite, verlinkt aus B1 bis B5
+  danke-kauf.html          nach dem Stripe-Kauf
+  Der-12-Fragen-Test.pdf   verlinkt aus A2, Gross- und Kleinschreibung beachten
+  Der-15-Minuten-Beweis.pdf
+  assets/                  Bilder aller Seiten
+  vercel.json              cleanUrls, ohne das sind /beweis und /starterset 404
+
+WICHTIG
+
+1. index.html muss index.html heissen. Wenn beim Download daraus
+   index_1.html oder index (1).html wird, umbenennen. Genau daran ist der
+   letzte Deploy gescheitert.
+
+2. In index.html sind konfiguriert:
+   - AC-Formular ueber proc.php, Feld-IDs 2, 7, 8, 9
+   - Telefon wird auf +49 normalisiert
+   - Make-Webhook, Payload als x-www-form-urlencoded
+
+3. Die alte Seite /danke NICHT loeschen, ohne vorher eine Weiterleitung
+   auf /danke-kauf anzulegen. Stripe zeigt nach der Zahlung auf /danke-kauf.
+
+4. Nach dem Deploy pruefen:
+   /              index.html laedt
+   /beweis        laedt, kein 404
+   /starterset    laedt, kein 404
+   /danke-check   laedt
+   /danke-kauf    laedt
+   /Der-12-Fragen-Test.pdf   laedt
