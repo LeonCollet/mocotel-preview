@@ -69,13 +69,13 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .hero-left{min-width:0}
 .hero-right{min-width:0}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(48,88,162,.18);border:1px solid rgba(48,88,162,.5);color:#cfe0fb;font-weight:600;font-size:.85rem;padding:8px 18px;border-radius:555px;margin-bottom:24px}
-.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04}
+.hero h1{font-size:clamp(2.1rem,3.25vw,3.05rem);font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:pretty}
 .hero p.sub{color:var(--muted);font-size:1.2rem;max-width:680px;margin:22px 0 30px}
 .hero-subhead{display:block;color:#fff;font-weight:700;font-size:clamp(1.25rem,1.9vw,1.5rem);line-height:1.22;letter-spacing:-.01em;margin-bottom:10px}
-.hero-photo{width:100%;max-width:600px;aspect-ratio:3/2;object-fit:cover;object-position:center 5%;height:auto;border-radius:20px;border:1px solid rgba(127,176,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.4);display:block;margin:0 auto}
+.hero-photo{width:100%;max-width:600px;aspect-ratio:3/2;object-fit:cover;object-position:center top;height:auto;border-radius:20px;border:1px solid rgba(127,176,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.4);display:block;margin:0 auto}
 .hero p.sub b{color:#fff;font-weight:600}
 .hero-cta{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
-.hero-meta{margin-top:26px;display:flex;flex-direction:column;gap:8px;justify-content:flex-start;color:var(--muted);font-size:.93rem}
+.hero-meta{margin-top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;justify-content:flex-start;text-align:left;color:var(--muted);font-size:.93rem}
 .hero-meta span{display:inline-flex;align-items:flex-start;gap:8px;flex-wrap:nowrap}
 .ck{color:var(--blue-soft);font-weight:700}
 .console-wrap{max-width:none;margin:0;position:relative;isolation:isolate}
@@ -111,8 +111,8 @@ header.site-header{position:sticky;top:0;z-index:60;background:rgba(11,24,48,.82
 .marquee-row span{font-weight:600;font-size:1.15rem;color:rgba(255,255,255,.55);white-space:nowrap}
 .marquee-row img{height:56px;width:auto;object-fit:contain;opacity:.9;transition:opacity .2s;border-radius:8px}
 .marquee-row img:hover{opacity:1}
-.reviews{display:flex;gap:20px;justify-content:flex-start;align-items:center;flex-wrap:wrap;margin-top:24px}
-.reviews img{height:100px;width:auto;border-radius:10px}
+.reviews{display:flex;gap:26px;justify-content:flex-start;align-items:center;flex-wrap:wrap;margin-top:24px}
+.reviews img{height:138px;width:auto;border-radius:12px}
 .logo-marquee{overflow:hidden;width:100%;padding:6px 0}
 .logo-marquee__track{display:flex;width:max-content;animation:scroll-x 48s linear infinite}
 .logo-marquee:hover .logo-marquee__track{animation-play-state:paused}
@@ -247,7 +247,7 @@ footer{background:rgba(7,15,30,.6);border-top:1px solid var(--line);color:var(--
 .copyright{margin-top:16px;font-size:.82rem}
 br.mbr{display:none}
 @media(max-width:1360px) and (min-width:881px){
-  .hero h1{font-size:clamp(2.1rem,4.1vw,3.3rem)}
+  .hero h1{font-size:clamp(1.95rem,3.6vw,2.9rem)}
   .hero-grid{gap:44px}
 }
 @media(max-width:880px){
@@ -264,15 +264,16 @@ br.mbr{display:none}
   .console__lbl{width:12ch}
   .hero{padding:66px 18px 56px;min-height:auto}
   .hero-grid{grid-template-columns:1fr;gap:26px;text-align:center}
-  .hero-cta,.hero-meta,.reviews{justify-content:center}
-  .hero-meta{align-items:center}
+  .hero-cta,.reviews{justify-content:center}
+  .hero-meta{align-items:flex-start;text-align:left}
+  .hero h1{font-size:clamp(1.55rem,5.9vw,2.2rem);letter-spacing:-.035em}
   .hero-left p.sub{margin-left:auto;margin-right:auto}
   .console-wrap{max-width:720px;margin:0 auto}
   .hero p.sub{font-size:1.08rem}
   .hero-subhead{font-size:clamp(1.5rem,5.6vw,1.75rem)}
-  .hero-photo{aspect-ratio:16/9;object-fit:cover;object-position:center 22%}
+  .hero-photo{aspect-ratio:4/3;object-fit:cover;object-position:center top}
   .reviews{gap:14px;flex-direction:row;flex-wrap:nowrap}
-  .reviews img{height:56px}
+  .reviews img{height:104px}
   .console-wrap{margin-top:34px}
   .console__body{font-size:.74rem;min-height:440px}
   .price-card,.inside-card{padding:26px}
@@ -293,7 +294,7 @@ br.mbr{display:none}
 }
 @media(max-width:420px){
   .reviews{flex-direction:row;gap:10px}
-  .reviews img{height:50px}
+  .reviews img{height:84px}
   .price-row .price{font-size:2.6rem}
 }
 @media(prefers-reduced-motion:reduce){.border-beam::before,.marquee-track,.logo-marquee__track{animation:none}}
@@ -379,7 +380,7 @@ p,li,span,label,figcaption,
 <div class="inner hero-grid">
 <div class="hero-left">
 <span class="badge">Kostenloser Selbst-Check · 60 Sekunden</span>
-<h1>Dein Handy klingelt im Urlaub.<br/>Weil die Antwort nur in <span class="accent">Deinem Kopf</span> liegt.</h1>
+<h1>Dein Handy klingelt im Urlaub.<br/>Weil die Antwort nur in<br/><span class="accent">Deinem Kopf</span> liegt.</h1>
 <p class="sub"><span class="hero-subhead">Gib Deiner Firma ein Gedächtnis.</span>Eine KI, die ausschließlich Euer eigenes Firmenwissen kennt und die Fragen Deines Teams in Sekunden beantwortet, mit Quelle. Damit Dein Team das System fragt statt Dich.</p>
 <div class="hero-cta">
 <a class="btn lg" data-track="cta_hero" href="#check">Mach den Engpass-Check <span class="btn-arrow">→</span></a>
