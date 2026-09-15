@@ -667,9 +667,10 @@ var QUIZ_CONFIG = {
     show("result");
     scrollToQuiz();
     track("quiz_complete", {score: score, band: band});
+    try{ if(window.fbq) fbq("trackCustom", "QuizComplete", {score: score, band: band}); }catch(e){}
   }
 
-  $("qzStart").addEventListener("click", function(){ idx = 0; render(); track("quiz_start"); });
+  $("qzStart").addEventListener("click", function(){ idx = 0; render(); track("quiz_start"); try{ if(window.fbq) fbq("trackCustom", "QuizStart"); }catch(e){} });
   $("qzBack").addEventListener("click", function(){ if(idx>0){ idx--; render(); } });
   $("qzToOptin").addEventListener("click", function(){
     /* Telefonfeld ab Score 5 (band mid und hot), bei low nie */
