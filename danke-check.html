@@ -545,6 +545,32 @@ p,li,span,label,figcaption,
 })();
 </script>
 <!-- ===== /First-Party Funnel-Tracking ===== -->
+<!-- ===== Meta Lead-Event (feuert einmal pro Opt-in, sobald der Pixel geladen ist) ===== -->
+<script>
+(function(){
+  /* Wird in _fbPixelReady eingereiht und laeuft, sobald der Consent-Block den Pixel initialisiert hat.
+     Bei bereits erteiltem Consent laeuft es beim Laden, sonst direkt nach "Alle akzeptieren".
+     Reload der Danke-Seite loest kein zweites Lead aus (sessionStorage-Flag). */
+  window._fbPixelReady = window._fbPixelReady || [];
+  window._fbPixelReady.push(function(){
+    try{
+      if(sessionStorage.getItem('mocotel_lead_sent')) return;
+      var p = new URLSearchParams(location.search);
+      var score = parseInt(p.get('score'), 10);
+      var band  = p.get('band') || '';
+      var eventId = 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+      fbq('track', 'Lead', {
+        content_name: 'engpass-check',
+        content_category: band,
+        value: isNaN(score) ? 0 : score,
+        currency: 'EUR'
+      }, { eventID: eventId });
+      sessionStorage.setItem('mocotel_lead_sent', eventId);
+    }catch(e){}
+  });
+})();
+</script>
+<!-- ===== /Meta Lead-Event ===== -->
 <!-- ===== Cookie-Consent + Meta-Pixel (feuert nur nach Zustimmung) ===== -->
 <style>
 #cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0A1730;border-top:1px solid rgba(127,176,255,.25);color:#fff;padding:18px 20px;font-size:.9rem;line-height:1.5;display:none;box-shadow:0 -10px 40px rgba(0,0,0,.45)}
